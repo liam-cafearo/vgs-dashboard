@@ -17,10 +17,9 @@ def index():
 @app.route("/videoGames/videoGameSales")
 def vg_sales():
     FIELDS = {
-        'Rank': False, 'Name': False, 'Platform': True, 
-        'Year': True, 'Genre': True, 'Publisher': True, 
-        'NA_Sales': True, 'EU_Sales': True, 'JP_Sales': True,
-        'Other_Sales': False, 'Global_Sales': True
+        'Platform': True, 'Year': True, 'Genre': True,
+        'Publisher': True, 'NA_Sales': True, 'EU_Sales': True,
+        'JP_Sales': True, 'Global_Sales': True
     }
 
     with MongoClient(MONGODB_HOST, MONGODB_PORT) as conn:
