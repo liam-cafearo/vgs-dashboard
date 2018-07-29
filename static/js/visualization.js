@@ -165,15 +165,16 @@ function createGraphs(error, videoGameSales) {
 
     // TODO world Map properties and values
     
-    // TODO - Ammend the below as a pie chart as the below is for a bar chart.
+    // TODO - Amend the below as a pie chart as the below is for a bar chart.
     platformChart
         // amend values to own spec
         .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
-        .width(300)
-        .height(250)
+        .height(220)
+        .radius(90)
+        .innerRadius(40)
+        .transitionDuration(1500)
         .dimension(platformDim)
         .group(numVideoGameSalesByPlatform)
-        .xAxis().ticks(4)
 
     dc.renderAll();
 };
