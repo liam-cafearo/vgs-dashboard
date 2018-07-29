@@ -152,7 +152,7 @@ function createGraphs(error, videoGameSales) {
         .height(250)
         .dimension(genreDim)
         .group(numVideoGameGenres)
-        .xAxis().ticks(4)
+        .xAxis().ticks(4);
 
     publisherChart
         // amend values to own spec
@@ -161,10 +161,10 @@ function createGraphs(error, videoGameSales) {
         .height(250)
         .dimension(publisherDim)
         .group(numVideoGamePublishers)
-        .xAxis().ticks(4)
+        .xAxis().ticks(4);
 
     // TODO world Map properties and values
-    
+
     // TODO - Amend the below as a pie chart as the below is for a bar chart.
     platformChart
         // amend values to own spec
@@ -174,7 +174,7 @@ function createGraphs(error, videoGameSales) {
         .innerRadius(40)
         .transitionDuration(1500)
         .dimension(platformDim)
-        .group(numVideoGameSalesByPlatform)
+        .group(numVideoGameSalesByPlatform);
 
     dc.renderAll();
 };
