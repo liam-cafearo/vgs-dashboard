@@ -13,34 +13,35 @@ function createGraphs(error, videoGameSales) {
 
     // Define Dimensions
     var yearReleaseDim = ndx.dimension(function (d) {
-        return d["Year"];
+        return d["Year"] ? d["Year"] : 0;
     });
     var genreDim = ndx.dimension(function (d) {
-        return d["Genre"];
+        return d["Genre"] ? d["Genre"] : "";
     });
     var publisherDim = ndx.dimension(function (d) {
-        return d["Publisher"];
+        return d["Publisher"] ? d["Publisher"] : "";
     });
     var platformDim = ndx.dimension(function (d) {
-        return d["Platform"];
+        return d["Platform"] ? d["Platform"] : "";
     });
     var totalNumEUSales = ndx.dimension(function (d) {
-        return d["EU_Sales"];
+        return d["EU_Sales"] ? d["EU_Sales"] : 0;
     });
-    var totalNumGames = ndx.dimension(function (d) {
-        return d["Rank"];
-    });
+    // TODO - No longer a Rank column so need to figure out how to work this out.
+    // var totalNumGames = ndx.dimension(function (d) {
+    //     return d["Rank"];
+    // });
     var totalNumGlobalSales = ndx.dimension(function (d) {
-        return d["Global_Sales"];
+        return d["Global_Sales"] ? d["Global_Sales"] : 0;
     });
     var totalNumJPSales = ndx.dimension(function (d) {
-        return d["JP_Sales"];
+        return d["JP_Sales"] ? d["JP_Sales"] : 0;
     });
     var totalNumNASales = ndx.dimension(function (d) {
-        return d["NA_Sales"];
+        return d["NA_Sales"] ? d["NA_Sales"] : 0;
     });
     var totalNumOtherSales = ndx.dimension(function (d) {
-        return d["Other_Sales"];
+        return d["Other_Sales"] ? d["Other_Sales"] : 0;
     });
     // TODO world sales dim
 
@@ -56,9 +57,10 @@ function createGraphs(error, videoGameSales) {
     var totalEUSales = totalNumEUSales.groupAll().reduceSum(function (d) {
         return d["EU_Sales"];
     });
-    var totalGames = totalNumGames.groupAll().reduceSum(function (d) {
-        return d["Rank"];
-    });
+    // TODO - No longer a Rank column so need to figure out how to work this out.
+    // var totalGames = totalNumGames.groupAll().reduceSum(function (d) {
+    //     return d["Rank"];
+    // });
     var totalGlobalSales = totalNumGlobalSales.groupAll().reduceSum(function (d) {
         return d["Global_Sales"];
     });
@@ -99,12 +101,12 @@ function createGraphs(error, videoGameSales) {
         })
         .group(totalEUSales);
 
-    videoGamesND
-        .formatNumber(d3.format("d"))
-        .valueAccessor(function (d) {
-            return d;
-        })
-        .group(totalGames);
+    // videoGamesND
+    //     .formatNumber(d3.format("d"))
+    //     .valueAccessor(function (d) {
+    //         return d;
+    //     })
+    //     .group(totalGames);
 
     globalSalesND
         .formatNumber(d3.format("d"))
