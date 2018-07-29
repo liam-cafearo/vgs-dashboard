@@ -165,7 +165,7 @@ function createGraphs(error, videoGameSales) {
 
     // TODO world Map properties and values
 
-    // TODO - Amend the below as a pie chart as the below is for a bar chart.
+    // TODO - Need to add svg components to make this a bar chart.
     platformChart
         // amend values to own spec
         .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
