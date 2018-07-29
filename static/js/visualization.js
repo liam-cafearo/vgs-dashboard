@@ -87,7 +87,7 @@ function createGraphs(error, videoGameSales) {
 
     // Metric Counters
     var euSalesND = dc.numberDisplay("#number-eu-sales-nd");
-    var videoGamesND = dc.numberDisplay("#number-video-games-nd");
+    // var videoGamesND = dc.numberDisplay("#number-video-games-nd");
     var globalSalesND = dc.numberDisplay("#number-global-sales-nd");
     var jpSalesND = dc.numberDisplay("#number-japan-sales-nd");
     var naSalesND = dc.numberDisplay("#number-na-sales-nd");
@@ -164,7 +164,8 @@ function createGraphs(error, videoGameSales) {
         .xAxis().ticks(4)
 
     // TODO world Map properties and values
-
+    
+    // TODO - Ammend the below as a pie chart as the below is for a bar chart.
     platformChart
         // amend values to own spec
         .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
