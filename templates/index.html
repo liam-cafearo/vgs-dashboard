@@ -1,3 +1,4 @@
+<!-- Separate layout code from content -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,161 +26,164 @@
             <!-- possibly remove this div -->
             <!-- <div class="col-sm-8">
                 <div class="row"> -->
-                    <!-- EU Sales Metric -->
-                    <!-- will need to play around with col-sm size -->
-                    <div class="col-sm-4">
-                        <div class="chart-wrapper">
-                            <div class="chart-title">
-                                Total Number of EU Sales
-                            </div>
-                            <div class="chart-stage">
-                                <div id="number-eu-sales-nd"></div>
-                            </div>
-                        </div>
+            <!-- EU Sales Metric -->
+            <!-- will need to play around with col-sm size -->
+            <div class="col-sm-4">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        Total Number of EU Sales
                     </div>
-                    <!-- EU Sales Metric -->
-
-                    <!-- Video Games in Collection Metric -->
-                    <div class="col-sm-4">
-                        <div class="chart-wrapper">
-                            <div class="chart-title">
-                                Total Number of Video Games in Collection
-                            </div>
-                            <div class="chart-stage">
-                                <div id="number-video-games-nd"></div>
-                            </div>
-                        </div>
+                    <div class="chart-stage">
+                        <div id="number-eu-sales-nd"></div>
                     </div>
-                    <!-- Video Games in Collection Metric -->
-
-                    <!-- Global Sales Metric -->
-                    <div class="col-sm-4">
-                        <div class="chart-wrapper">
-                            <div class="chart-title">
-                                Total Number of Global Sales
-                            </div>
-                            <div class="chart-stage">
-                                <div id="number-global-sales-nd"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Global Sales Metric -->
-
-                    <!-- Japan Sales Metric -->
-                    <div class="col-sm-4">
-                        <div class="chart-wrapper">
-                            <div class="chart-title">
-                                Total Number of Japan Sales
-                            </div>
-                            <div class="chart-stage">
-                                <div id="number-japan-sales-nd"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Japan Sales Metric -->
-
-                    <!-- North American Sales Metric -->
-                    <div class="col-sm-4">
-                        <div class="chart-wrapper">
-                            <div class="chart-title">
-                                Total Number of North American Sales
-                            </div>
-                            <div class="chart-stage">
-                                <div id="number-na-sales-nd"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- North American Sales -->
-
-                    <!-- Other Sales Metric-->
-                    <div class="col-sm-4">
-                        <div class="chart-wrapper">
-                            <div class="chart-title">
-                                Total Number of Other Sales
-                            </div>
-                            <div class="chart-stage">
-                                <div id="number-other-sales-nd"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Other Sales Metric-->
-
-                    <!-- Year of Release Chart -->
-                    <div class="col-sm-6">
-                        <div class="chart-wrapper">
-                            <div class="chart-title">
-                                Year of Release
-                            </div>
-                            <div class="chart-stage">
-                                <div id="year-release-bar-chart"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Year of Release Chart -->
-
-                    <!-- Game Genre Chart -->
-                    <div class="col-sm-6">
-                        <div class="chart-wrapper">
-                            <div class="chart-title">
-                                Game Genre
-                            </div>
-                            <div class="chart-stage">
-                                <div id="genre-row-chart"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Game Genre Chart -->
-
-                    <!-- Publisher Chart -->
-                    <div class="col-sm-6">
-                        <div class="chart-wrapper">
-                            <div class="chart-title">
-                                Publisher
-                            </div>
-                            <div class="chart-stage">
-                                <div id="publisher-row-chart"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Publisher Chart -->
-
-                    <!-- World Sales -->
-                    <div class="col-sm-6">
-                        <div class="chart-wrapper">
-                            <div class="chart-title">
-                                World Sales
-                            </div>
-                            <div class="chart-stage">
-                                <div id="world-map-chart"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- World Sales -->
-
-                    <!-- Platform Pie Chart -->
-                    <div class="col-sm-6">
-                        <div class="chart-wrapper">
-                            <div class="chart-title">
-                                Game Platform
-                            </div>
-                            <div class="chart-stage">
-                                <div id="platform-pie-chart"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Platform Pie Chart -->
                 </div>
-            <!-- </div> -->
-                <script src="{{ url_for ('static', filename='lib/js/jquery.min.js')}}"></script>
-                <script src="{{ url_for ('static', filename='lib/js/bootstrap.min.js')}}"></script>
-                <script src="{{ url_for ('static', filename='lib/js/crossfilter.js')}}"></script>
-                <script src="{{ url_for ('static', filename='lib/js/d3.js')}}"></script>
-                <script src="{{ url_for ('static', filename='lib/js/dc.js')}}"></script>
-                <script src="{{ url_for ('static', filename='lib/js/queue.js')}}"></script>
-                <script src="{{ url_for ('static', filename='lib/js/keen.min.js')}}"></script>
-                <script src="{{ url_for ('static', filename='js/visualization.js')}}"></script>
             </div>
+            <!-- EU Sales Metric -->
+
+            <!-- Video Games in Collection Metric -->
+            <div class="col-sm-4">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        Total Number of Video Games in Collection
+                    </div>
+                    <div class="chart-stage">
+                        <div id="number-video-games-nd"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Video Games in Collection Metric -->
+
+            <!-- Global Sales Metric -->
+            <div class="col-sm-4">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        Total Number of Global Sales
+                    </div>
+                    <div class="chart-stage">
+                        <div id="number-global-sales-nd"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Global Sales Metric -->
+
+            <!-- Japan Sales Metric -->
+            <div class="col-sm-4">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        Total Number of Japan Sales
+                    </div>
+                    <div class="chart-stage">
+                        <div id="number-japan-sales-nd"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Japan Sales Metric -->
+
+            <!-- North American Sales Metric -->
+            <div class="col-sm-4">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        Total Number of North American Sales
+                    </div>
+                    <div class="chart-stage">
+                        <div id="number-na-sales-nd"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- North American Sales -->
+
+            <!-- Other Sales Metric-->
+            <div class="col-sm-4">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        Total Number of Other Sales
+                    </div>
+                    <div class="chart-stage">
+                        <div id="number-other-sales-nd"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Other Sales Metric-->
+
+            <!-- Year of Release Chart -->
+            <div class="col-sm-6">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        Year of Release
+                    </div>
+                    <div class="chart-stage">
+                        <div id="year-release-bar-chart">
+                            <svg width = "500" height = "500">
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Year of Release Chart -->
+
+            <!-- Game Genre Chart -->
+            <div class="col-sm-6">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        Game Genre
+                    </div>
+                    <div class="chart-stage">
+                        <div id="genre-row-chart"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Game Genre Chart -->
+
+            <!-- Publisher Chart -->
+            <div class="col-sm-6">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        Publisher
+                    </div>
+                    <div class="chart-stage">
+                        <div id="publisher-row-chart"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Publisher Chart -->
+
+            <!-- World Sales -->
+            <div class="col-sm-6">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        World Sales
+                    </div>
+                    <div class="chart-stage">
+                        <div id="world-map-chart"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- World Sales -->
+
+            <!-- Platform Pie Chart -->
+            <div class="col-sm-6">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        Game Platform
+                    </div>
+                    <div class="chart-stage">
+                        <div id="platform-pie-chart"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Platform Pie Chart -->
         </div>
+        <!-- </div> -->
+        <script src="{{ url_for ('static', filename='lib/js/jquery.min.js')}}"></script>
+        <script src="{{ url_for ('static', filename='lib/js/bootstrap.min.js')}}"></script>
+        <script src="{{ url_for ('static', filename='lib/js/crossfilter.js')}}"></script>
+        <script src="{{ url_for ('static', filename='lib/js/d3.js')}}"></script>
+        <script src="{{ url_for ('static', filename='lib/js/dc.js')}}"></script>
+        <script src="{{ url_for ('static', filename='lib/js/queue.js')}}"></script>
+        <script src="{{ url_for ('static', filename='lib/js/keen.min.js')}}"></script>
+        <script src="{{ url_for ('static', filename='js/visualization.js')}}"></script>
+    </div>
+    </div>
 
     </div>
 
