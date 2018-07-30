@@ -1,5 +1,5 @@
 queue()
-    .defer(d3.json, "/videoGames/videoGameSales")
+    .defer(d3.json, "/vgsJson")
     .await(createGraphs);
 
 function createGraphs(error, videoGameSales) {
@@ -101,75 +101,82 @@ function createGraphs(error, videoGameSales) {
     var svgHeight = 300;
     var spacing = 2;
 
-    var maxData = d3.max(yearReleaseDim);
+    // TODO ask mentor for advise on this
+    // d3.json("json", function (error, yearData) {
+    //     yearData.forEach(function (d) {
+    //         d.Year = +d.Year;
+    //     });
 
-    var heightScale = d3.scale.linear()
-        .domain([0, maxData])
-        .range([0, svgHeight]);
+    //     var maxData = d3.max(yearData);
 
-    var yAxisScale = d3.scale.linear()
-        .domain([0, maxData])
-        .range([svgHeight, 0]);
+    //     var heightScale = d3.scale.linear()
+    //         .domain([0, maxData])
+    //         .range([0, svgHeight]);
 
-    var xAxisScale = d3.scale.ordinal()
-        .domain(yearReleaseDim.map(function (d) {
-            return d.Year;
-        }))
-        .rangeBands([0, svgWidth]);
+    //     var yAxisScale = d3.scale.linear()
+    //         .domain([0, maxData])
+    //         .range([svgHeight, 0]);
 
-    var colorScale = d3.scale.linear()
-        .domain([0, maxData])
-        .range(["blue", "red"]); // TODO amend color to fit website style
+    //     var xAxisScale = d3.scale.ordinal()
+    //         .domain(yearData.map(function (d) {
+    //             return d.Year;
+    //         }))
+    //         .rangeBands([0, svgWidth]);
 
-    var yAxis = d3.svg.axis()
-        .scale(yAxisScale)
-        .orient("left")
-        .ticks(8);
+    //     var colorScale = d3.scale.linear()
+    //         .domain([0, maxData])
+    //         .range(["blue", "red"]); // TODO amend color to fit website style
 
-    var xAxis = d3.svg.axis()
-        .scale(xAxisScale)
-        .orient("bottom")
-        .ticks(yearReleaseDim.length)
+    //     var yAxis = d3.svg.axis()
+    //         .scale(yAxisScale)
+    //         .orient("left")
+    //         .ticks(8);
 
-    var canvas = d3.select("body")
-        .append("svg")
-        .attr("width", canvasWidth)
-        .attr("height", canvasHeight)
-        .attr("style", "background-color:#ddd"); // TODO amend color to suit dashboard color scheme.
+    //     var xAxis = d3.svg.axis()
+    //         .scale(xAxisScale)
+    //         .orient("bottom")
+    //         .ticks(yearData.length)
 
-    canvas.append("g")
-        .attr("class", "axis") // styled axis in myCSS file
-        .attr("transform", "translate(" + (margin.left - 2) + "," + margin.bottom + ")")
-        .call(yAxis);
+    //     var canvas = d3.select("body")
+    //         .append("svg")
+    //         .attr("width", canvasWidth)
+    //         .attr("height", canvasHeight)
+    //         .attr("style", "background-color:#ddd"); // TODO amend color to suit dashboard color scheme.
 
-    canvas.append("g")
-        .attr("class", "axis")
-        .attr("transform", "translate(" + margin.left + "," + (canvasHeight - (margin.bottom - 2)) + ")")
-        .call(xAxis);
+    //     canvas.append("g")
+    //         .attr("class", "axis") // styled axis in myCSS file
+    //         .attr("transform", "translate(" + (margin.left - 2) + "," + margin.bottom + ")")
+    //         .call(yAxis);
 
-    var svg = canvas.append("g")
-        .attr("width", svgWidth)
-        .attr("height", svgHeight)
-        .attr("style", "background-color:#ddd")
-        .attr("transform", "translate(" + margin.left + "," + margin.bottom + ")")
+    //     canvas.append("g")
+    //         .attr("class", "axis")
+    //         .attr("transform", "translate(" + margin.left + "," + (canvasHeight - (margin.bottom - 2)) + ")")
+    //         .call(xAxis);
 
-    svg.selectAll("rect")
-        .data(yearReleaseDim)
-        .enter()
-        .append("rect")
-        .attr("x", function (d, i) {
-            return i * (svgWidth / yearReleaseDim.length);
-        })
-        .attr("y", function (d) {
-            return svgHeight - (heightScale(d));
-        })
-        .attr("width", (svgWidth / yearReleaseDim.length) - spacing)
-        .attr("height", function (d) {
-            return (heightScale(d));
-        })
-        .attr("fill", function (d) {
-            return (colorScale(d));
-        });
+    //     var svg = canvas.append("g")
+    //         .attr("width", svgWidth)
+    //         .attr("height", svgHeight)
+    //         .attr("style", "background-color:#ddd")
+    //         .attr("transform", "translate(" + margin.left + "," + margin.bottom + ")")
+
+    //     svg.selectAll("rect")
+    //         .data(yearData)
+    //         .enter()
+    //         .append("rect")
+    //         .attr("x", function (d, i) {
+    //             return i * (svgWidth / yearData.length);
+    //         })
+    //         .attr("y", function (d) {
+    //             return svgHeight - (heightScale(d));
+    //         })
+    //         .attr("width", (svgWidth / yearData.length) - spacing)
+    //         .attr("height", function (d) {
+    //             return (heightScale(d));
+    //         })
+    //         .attr("fill", function (d) {
+    //             return (colorScale(d));
+    //         });
+    // });
 
     // Bar chart variables
 
@@ -230,14 +237,20 @@ function createGraphs(error, videoGameSales) {
         })
         .group(totalOtherSales);
 
-    yearChart
-        // amend values to own spec
-        .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
-        .width(300)
-        .height(250)
-        .dimension(yearReleaseDim)
-        .group(numVideoGameSalesByDate)
-        .xAxis().ticks(4);
+    // TODO ask mentor for advise on this
+    // yearChart
+    //     // amend values to own spec
+    //     .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
+    //     .width(1200)
+    //     .height(300)
+    //     .dimension(yearReleaseDim)
+    //     .group(numVideoGameSalesByDate)
+    //     .renderArea(true)
+    //     .transitionDuration(500)
+    //     .x(d3.time.scale().domain([minYear, maxYear]))
+    //     .elasticY(true)
+    //     .xAxisLabel("Year")
+    //     .yAxis().ticks(6);
 
     genreChart
         // amend values to own spec
