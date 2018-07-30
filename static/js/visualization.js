@@ -11,7 +11,8 @@ function createGraphs(error, videoGameSales) {
     // Create a Crossfilter instance
     var ndx = crossfilter(videoGameSales);
 
-    // Define Dimensions
+    // Dimensions start
+
     var yearReleaseDim = ndx.dimension(function (d) {
         return d["Year"] ? d["Year"] : 0;
     });
@@ -45,7 +46,9 @@ function createGraphs(error, videoGameSales) {
     });
     // TODO world sales dim
 
-    // Add the Metrics
+    // Dimensions end
+
+    // Metrics start
 
     var numVideoGameSalesByDate = yearReleaseDim.group();
     var numVideoGameGenres = genreDim.group();
@@ -74,11 +77,57 @@ function createGraphs(error, videoGameSales) {
         return d["Other_Sales"];
     });
 
+    // Metrics end
+
     // Values for charts
     var minYear = yearReleaseDim.bottom(1)[0]["Year"];
     var maxYear = yearReleaseDim.top(1)[0]["Year"];
 
     // Charts
+
+    // Bar chart variables
+
+    var svgWidth = 500;
+    var svgHeight = 300;
+    var spacing = 2;
+
+    var heightScale = d3.scale.linear()
+        .domain([0, d3.max(yearReleaseDim)])
+        .range([0, 0.9 * svgHeight]);
+
+    var colorScale = d3.scale.linear()
+        .domain([0, d3.max(yearReleaseDim)])
+        .range(["blue", "red"]);
+
+    // Check if width and height is needed if in html file?
+    var svg = d3.select("body")
+        .append("svg")
+        .attr("width", 500)
+        .attr("height", 300);
+
+    var g = svg.append('g')
+        .attr("transform", "translate(0,-20)");
+
+    g.selectAll("rect")
+        .data(yearReleaseDim)
+        .enter()
+        .append("rect")
+        .attr("x", function (d, i) {
+            return i * (svgWidth / yearReleaseDim.length);
+        })
+        .attr("y", function (d) {
+            return svgHeight - (heightScale(d));
+        })
+        .attr("width", (svgWidth / yearReleaseDim.length) - spacing)
+        .attr("height", function (d) {
+            return (heightScale(d));
+        })
+        .attr("fill", function (d) {
+            return (colorScale(d));
+        }); // TODO amend color to fit website style
+
+    // Bar chart variables
+
     var yearChart = dc.barChart("#year-release-bar-chart");
     var genreChart = dc.rowChart("#genre-row-chart");
     var publisherChart = dc.rowChart("#publisher-row-chart");
