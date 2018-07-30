@@ -16,8 +16,8 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/videoGames/videoGameSales")
-def vg_sales():
+@app.route("/vgsJson")
+def vgsJson():
     FIELDS = {
         '_id': False, 'Platform': True, 'Year': True, 'Genre': True,
         'Publisher': True, 'NA_Sales': True, 'EU_Sales': True,
@@ -30,6 +30,10 @@ def vg_sales():
         videoGameSales = collection.find(projection=FIELDS)
         return json.dumps(list(videoGameSales))
 
+# Add code for dataTable here
+@app.route("/vgsDataTable")
+def vgsDataTable():
+    return render_template("dataTable.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
