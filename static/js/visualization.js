@@ -179,8 +179,8 @@ function createGraphs(error, videoGameSales) {
     // });
 
     // Bar chart variables
-
-    var yearChart = dc.barChart("#year-release-bar-chart");
+    // TODO re-enable once working
+    // var yearChart = dc.barChart("#year-release-bar-chart");
     var genreChart = dc.rowChart("#genre-row-chart");
     var publisherChart = dc.rowChart("#publisher-row-chart");
     // TODO insert world map var here
