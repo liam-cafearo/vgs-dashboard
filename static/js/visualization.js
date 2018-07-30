@@ -86,29 +86,74 @@ function createGraphs(error, videoGameSales) {
     // Charts
 
     // Bar chart variables
+    // Check if variable names are OK as these are similar to the lesson
+
+    var margin = {
+        top: 50,
+        right: 0,
+        bottom: 50,
+        left: 50
+    };
+    var canvasWidth = svgWidth + margin.right + margin.left;
+    var canvasHeight = svgHeight + margin.top + margin.bottom;
 
     var svgWidth = 500;
     var svgHeight = 300;
     var spacing = 2;
 
+    var maxData = d3.max(yearReleaseDim);
+
     var heightScale = d3.scale.linear()
-        .domain([0, d3.max(yearReleaseDim)])
-        .range([0, 0.9 * svgHeight]);
+        .domain([0, maxData])
+        .range([0, svgHeight]);
+
+    var yAxisScale = d3.scale.linear()
+        .domain([0, maxData])
+        .range([svgHeight, 0]);
+
+    var xAxisScale = d3.scale.ordinal()
+        .domain(yearReleaseDim.map(function (d) {
+            return d.Year;
+        }))
+        .rangeBands([0, svgWidth]);
 
     var colorScale = d3.scale.linear()
-        .domain([0, d3.max(yearReleaseDim)])
-        .range(["blue", "red"]);
+        .domain([0, maxData])
+        .range(["blue", "red"]); // TODO amend color to fit website style
 
-    // Check if width and height is needed if in html file?
-    var svg = d3.select("body")
+    var yAxis = d3.svg.axis()
+        .scale(yAxisScale)
+        .orient("left")
+        .ticks(8);
+
+    var xAxis = d3.svg.axis()
+        .scale(xAxisScale)
+        .orient("bottom")
+        .ticks(yearReleaseDim.length)
+
+    var canvas = d3.select("body")
         .append("svg")
-        .attr("width", 500)
-        .attr("height", 300);
+        .attr("width", canvasWidth)
+        .attr("height", canvasHeight)
+        .attr("style", "background-color:#ddd"); // TODO amend color to suit dashboard color scheme.
 
-    var g = svg.append('g')
-        .attr("transform", "translate(0,-20)");
+    canvas.append("g")
+        .attr("class", "axis") // styled axis in myCSS file
+        .attr("transform", "translate(" + (margin.left - 2) + "," + margin.bottom + ")")
+        .call(yAxis);
 
-    g.selectAll("rect")
+    canvas.append("g")
+        .attr("class", "axis")
+        .attr("transform", "translate(" + margin.left + "," + (canvasHeight - (margin.bottom - 2)) + ")")
+        .call(xAxis);
+
+    var svg = canvas.append("g")
+        .attr("width", svgWidth)
+        .attr("height", svgHeight)
+        .attr("style", "background-color:#ddd")
+        .attr("transform", "translate(" + margin.left + "," + margin.bottom + ")")
+
+    svg.selectAll("rect")
         .data(yearReleaseDim)
         .enter()
         .append("rect")
@@ -124,7 +169,7 @@ function createGraphs(error, videoGameSales) {
         })
         .attr("fill", function (d) {
             return (colorScale(d));
-        }); // TODO amend color to fit website style
+        });
 
     // Bar chart variables
 
