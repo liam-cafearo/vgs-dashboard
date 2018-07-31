@@ -12,8 +12,8 @@ COLLECTION_NAME = 'videoGameSales'
 
 
 @app.route("/")
-def index():
-    return render_template("index.html")
+def dataDash():
+    return render_template("dataDash.html")
 
 
 @app.route("/vgsJson")
