@@ -8,12 +8,20 @@ function createGraphs(error, videoGameSales) {
         throw error;
     }
 
+    var videoGames = videoGameSales;
+    // Doesn't like this formatting, ask for advice.
+    // var dateFormat = d3.time.format("%Y");
+    // videoGames.forEach(function (d) {
+    //     d["Year"] = dateFormat.parse(d["Year"]);
+    //     d["Year"].setDate(1);
+    // })
+
     // Create a Crossfilter instance
-    var ndx = crossfilter(videoGameSales);
+    var ndx = crossfilter(videoGames);
 
     // Dimensions start
 
-    var yearReleaseDim = ndx.dimension(function (d) {
+    var yearDim = ndx.dimension(function (d) {
         return d["Year"] ? d["Year"] : 0;
     });
     var genreDim = ndx.dimension(function (d) {
@@ -28,10 +36,6 @@ function createGraphs(error, videoGameSales) {
     var totalNumEUSales = ndx.dimension(function (d) {
         return d["EU_Sales"] ? d["EU_Sales"] : 0;
     });
-    // TODO - No longer a Rank column so need to figure out how to work this out.
-    // var totalNumGames = ndx.dimension(function (d) {
-    //     return d["Rank"];
-    // });
     var totalNumGlobalSales = ndx.dimension(function (d) {
         return d["Global_Sales"] ? d["Global_Sales"] : 0;
     });
@@ -49,138 +53,36 @@ function createGraphs(error, videoGameSales) {
     // Dimensions end
 
     // Metrics start
-
-    var numVideoGameSalesByDate = yearReleaseDim.group();
+    var all = ndx.groupAll();
+    var numVideoGameSalesByDate = yearDim.group();
     var numVideoGameGenres = genreDim.group();
     var numVideoGamePublishers = publisherDim.group();
     var numVideoGameSalesByPlatform = platformDim.group();
-
-    // Not sure if required?
-    // var all = ndx.groupAll();
-    var totalEUSales = totalNumEUSales.groupAll().reduceSum(function (d) {
+    var totalEUSales = totalNumEUSales.group().reduceSum(function (d) {
         return d["EU_Sales"];
     });
-    // TODO - No longer a Rank column so need to figure out how to work this out.
-    // var totalGames = totalNumGames.groupAll().reduceSum(function (d) {
-    //     return d["Rank"];
-    // });
-    var totalGlobalSales = totalNumGlobalSales.groupAll().reduceSum(function (d) {
+    var totalGlobalSales = totalNumGlobalSales.group().reduceSum(function (d) {
         return d["Global_Sales"];
     });
-    var totalJPSales = totalNumJPSales.groupAll().reduceSum(function (d) {
+    var totalJPSales = totalNumJPSales.group().reduceSum(function (d) {
         return d["JP_Sales"];
     });
-    var totalNASales = totalNumNASales.groupAll().reduceSum(function (d) {
+    var totalNASales = totalNumNASales.group().reduceSum(function (d) {
         return d["NA_Sales"];
     });
-    var totalOtherSales = totalNumOtherSales.groupAll().reduceSum(function (d) {
+    var totalOtherSales = totalNumOtherSales.group().reduceSum(function (d) {
         return d["Other_Sales"];
     });
 
     // Metrics end
 
     // Values for charts
-    var minYear = yearReleaseDim.bottom(1)[0]["Year"];
-    var maxYear = yearReleaseDim.top(1)[0]["Year"];
+    var minYear = yearDim.bottom(1)[0]["Year"];
+    var maxYear = yearDim.top(1)[0]["Year"];
 
     // Charts
 
-    // Bar chart variables
-    // Check if variable names are OK as these are similar to the lesson
-
-    var margin = {
-        top: 50,
-        right: 0,
-        bottom: 50,
-        left: 50
-    };
-    var canvasWidth = svgWidth + margin.right + margin.left;
-    var canvasHeight = svgHeight + margin.top + margin.bottom;
-
-    var svgWidth = 500;
-    var svgHeight = 300;
-    var spacing = 2;
-
-    // TODO ask mentor for advise on this
-    // d3.json("json", function (error, yearData) {
-    //     yearData.forEach(function (d) {
-    //         d.Year = +d.Year;
-    //     });
-
-    //     var maxData = d3.max(yearData);
-
-    //     var heightScale = d3.scale.linear()
-    //         .domain([0, maxData])
-    //         .range([0, svgHeight]);
-
-    //     var yAxisScale = d3.scale.linear()
-    //         .domain([0, maxData])
-    //         .range([svgHeight, 0]);
-
-    //     var xAxisScale = d3.scale.ordinal()
-    //         .domain(yearData.map(function (d) {
-    //             return d.Year;
-    //         }))
-    //         .rangeBands([0, svgWidth]);
-
-    //     var colorScale = d3.scale.linear()
-    //         .domain([0, maxData])
-    //         .range(["blue", "red"]); // TODO amend color to fit website style
-
-    //     var yAxis = d3.svg.axis()
-    //         .scale(yAxisScale)
-    //         .orient("left")
-    //         .ticks(8);
-
-    //     var xAxis = d3.svg.axis()
-    //         .scale(xAxisScale)
-    //         .orient("bottom")
-    //         .ticks(yearData.length)
-
-    //     var canvas = d3.select("body")
-    //         .append("svg")
-    //         .attr("width", canvasWidth)
-    //         .attr("height", canvasHeight)
-    //         .attr("style", "background-color:#ddd"); // TODO amend color to suit dashboard color scheme.
-
-    //     canvas.append("g")
-    //         .attr("class", "axis") // styled axis in myCSS file
-    //         .attr("transform", "translate(" + (margin.left - 2) + "," + margin.bottom + ")")
-    //         .call(yAxis);
-
-    //     canvas.append("g")
-    //         .attr("class", "axis")
-    //         .attr("transform", "translate(" + margin.left + "," + (canvasHeight - (margin.bottom - 2)) + ")")
-    //         .call(xAxis);
-
-    //     var svg = canvas.append("g")
-    //         .attr("width", svgWidth)
-    //         .attr("height", svgHeight)
-    //         .attr("style", "background-color:#ddd")
-    //         .attr("transform", "translate(" + margin.left + "," + margin.bottom + ")")
-
-    //     svg.selectAll("rect")
-    //         .data(yearData)
-    //         .enter()
-    //         .append("rect")
-    //         .attr("x", function (d, i) {
-    //             return i * (svgWidth / yearData.length);
-    //         })
-    //         .attr("y", function (d) {
-    //             return svgHeight - (heightScale(d));
-    //         })
-    //         .attr("width", (svgWidth / yearData.length) - spacing)
-    //         .attr("height", function (d) {
-    //             return (heightScale(d));
-    //         })
-    //         .attr("fill", function (d) {
-    //             return (colorScale(d));
-    //         });
-    // });
-
-    // Bar chart variables
-    // TODO re-enable once working
-    // var yearChart = dc.barChart("#year-release-bar-chart");
+    var yearChart = dc.barChart("#year-release-bar-chart");
     var genreChart = dc.rowChart("#genre-row-chart");
     var publisherChart = dc.rowChart("#publisher-row-chart");
     // TODO insert world map var here
@@ -238,19 +140,18 @@ function createGraphs(error, videoGameSales) {
         .group(totalOtherSales);
 
     // TODO ask mentor for advise on this
-    // yearChart
-    //     // amend values to own spec
-    //     .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
-    //     .width(1200)
-    //     .height(300)
-    //     .dimension(yearReleaseDim)
-    //     .group(numVideoGameSalesByDate)
-    //     .renderArea(true)
-    //     .transitionDuration(500)
-    //     .x(d3.time.scale().domain([minYear, maxYear]))
-    //     .elasticY(true)
-    //     .xAxisLabel("Year")
-    //     .yAxis().ticks(6);
+    yearChart
+        // amend values to own spec
+        .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
+        .width(600)
+        .height(160)
+        .dimension(yearDim)
+        .group(numVideoGameSalesByDate)
+        .transitionDuration(500)
+        .x(d3.time.scale().domain([minYear, maxYear]))
+        .elasticY(true)
+        .xAxisLabel("Year")
+        .yAxis().ticks(4);
 
     genreChart
         // amend values to own spec
@@ -278,7 +179,7 @@ function createGraphs(error, videoGameSales) {
         .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
         .height(220)
         .radius(90)
-        .innerRadius(40)
+        // .innerRadius(40)
         .transitionDuration(1500)
         .dimension(platformDim)
         .group(numVideoGameSalesByPlatform);
