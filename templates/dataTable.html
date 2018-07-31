@@ -22,3 +22,7 @@
     </div>
 </div>
 {% endblock %}
+{% block scripts %}
+<!-- may need to load visualization script before this one -->
+<script src="{{ url_for ('static', filename='js/table.js')}}"></script>
+{% endblock %}
