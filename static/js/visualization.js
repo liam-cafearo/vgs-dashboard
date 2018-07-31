@@ -10,11 +10,11 @@ function createGraphs(error, videoGameSales) {
 
     var videoGames = videoGameSales;
     // Doesn't like this formatting, ask for advice.
-    // var dateFormat = d3.time.format("%Y");
-    // videoGames.forEach(function (d) {
-    //     d["Year"] = dateFormat.parse(d["Year"]);
-    //     d["Year"].setDate(1);
-    // })
+    var dateFormat = d3.time.format("%Y");
+    videoGames.forEach(function (d) {
+        d["Year"] = dateFormat.parse(d["Year"]);
+        d["Year"].setDate(1);
+    })
 
     // Create a Crossfilter instance
     var ndx = crossfilter(videoGames);
@@ -54,7 +54,7 @@ function createGraphs(error, videoGameSales) {
 
     // Metrics start
     var all = ndx.groupAll();
-    var numVideoGameSalesByDate = yearDim.group();
+    var yearReleased = yearDim.group();
     var numVideoGameGenres = genreDim.group();
     var numVideoGamePublishers = publisherDim.group();
     var numVideoGameSalesByPlatform = platformDim.group();
@@ -146,7 +146,7 @@ function createGraphs(error, videoGameSales) {
         .width(600)
         .height(160)
         .dimension(yearDim)
-        .group(numVideoGameSalesByDate)
+        .group(yearReleased)
         .transitionDuration(500)
         .x(d3.time.scale().domain([minYear, maxYear]))
         .elasticY(true)
