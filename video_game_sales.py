@@ -31,9 +31,12 @@ def vgsJson():
         return json.dumps(list(videoGameSales))
 
 # Add code for dataTable here
+
+
 @app.route("/vgsDataTable")
 def vgsDataTable():
     return render_template("dataTable.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
