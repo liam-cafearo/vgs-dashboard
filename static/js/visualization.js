@@ -184,7 +184,7 @@ function createGraphs(error, videoGameSales) {
         .dimension(platformDim)
         .group(numVideoGameSalesByPlatform);
 
-    var tabledData = dc.dataTable("#dc-data-table");
+    var tabledData = dc.dataTable("#data-table");
     tabledData
         .group(all)
         .columns([
