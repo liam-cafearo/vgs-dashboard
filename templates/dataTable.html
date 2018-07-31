@@ -1,1 +1,20 @@
-<!-- add code here for data table page -->
+{% extends "index.html" %} {% block content %}
+<div>
+    <table id="dc-data-table">
+        <thead>
+            <tr class="header">
+                <th>Name</th>
+                <th>Platform</th>
+                <th>Year</th>
+                <th>Genre</th>
+                <th>Publisher</th>
+                <th>NA Sales</th>
+                <th>EU Sales</th>
+                <th>JP Sales</th>
+                <th>Other Sales</th>
+                <th>Global Sales</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+{% endblock %}
