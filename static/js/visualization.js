@@ -184,5 +184,41 @@ function createGraphs(error, videoGameSales) {
         .dimension(platformDim)
         .group(numVideoGameSalesByPlatform);
 
+    var tabledData = dc.dataTable("#dc-data-table");
+    tabledData
+        .group(all)
+        .columns([
+            function (d) {
+                return d.Name ? d.Name : "";
+            },
+            function (d) {
+                return d.Platform ? d.Platform : "";
+            },
+            function (d) {
+                return d.Year ? d.Year : 0;
+            },
+            function (d) {
+                return d.Genre ? d.Genre : "";
+            },
+            function (d) {
+                return d.Publisher ? d.Publisher : "";
+            },
+            function (d) {
+                return d.NA_Sales ? d.NA_Sales : 0;
+            },
+            function (d) {
+                return d.EU_Sales ? d.EU_Sales : 0;
+            },
+            function (d) {
+                return d.JP_Sales ? d.JP_Sales : 0;
+            },
+            function (d) {
+                return d.Other_Sales ? d.Other_Sales : 0;
+            },
+            function (d) {
+                return d.Global_Sales ? d.Global_Sales : 0;
+            }
+        ]);
+
     dc.renderAll();
 };
