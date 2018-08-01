@@ -10,11 +10,11 @@ function createGraphs(error, videoGameSales) {
 
     var videoGames = videoGameSales;
     // Doesn't like this formatting, ask for advice.
-    var dateFormat = d3.time.format("%Y");
-    videoGames.forEach(function (d) {
-        d["Year"] = dateFormat.parse(d["Year"]);
-        d["Year"].setDate(1);
-    })
+    // var dateFormat = d3.time.format("%Y");
+    // videoGames.forEach(function (d) {
+    //     d["Year"] = dateFormat.parse(d["Year"]);
+    //     d["Year"].setDate(1);
+    // })
 
     // Create a Crossfilter instance
     var ndx = crossfilter(videoGames);
