@@ -57,3 +57,7 @@
 .alignright {
     float: right;
 }
+
+.nav-button {
+    margin-top: 8px;
+}
