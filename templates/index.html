@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/keen-dashboards.css')}}">
     <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/dc.css')}}">
     <link rel="stylesheet" href="{{ url_for ('static', filename='css/myCSS.css')}}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
 </head>
 
 <body class="application">
@@ -21,8 +23,16 @@
                 <div>
                     <ul class="nav navbar-nav navbar-right">
                         <!-- is role="presentation" required here? -->
-                        <li><a href="/">Dashboard</a></li>
-                        <li><a href="/dataTable">Data Table</a></li>
+                        <li>
+                            <a href="/">
+                                <span class="fas fa-home"></span> Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/dataTable">
+                                <span class="fas fa-table"></span> Data Table
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -30,6 +40,25 @@
     </nav>
     <div class="container-fluid">
         {% block content %} {% endblock%}
+    </div>
+    <hr>
+    <div id="textbox">
+    <p class="small-text-info alignleft">
+        Code for this Dashboard can be found on
+        <a href="https://github.com/liam-cafearo/vgs-dashboard"> GitHub
+            <span class="fab fa-github-square"></span>
+        </a>
+    </p>
+    <p class="small-text-info alignright">
+        The creator of this dashboard can be found on
+        <a href="https://twitter.com/LCafearo"> Twitter
+            <span class="fab fa-twitter-square"></span>
+        </a>
+        <a href="https://www.linkedin.com/in/liam-cafearo/"> LinkedIn
+            <span class="fab fa-linkedin"></span>
+        </a>
+    </p>
+    <div style="clear: both;"></div>
     </div>
     <script src="{{ url_for ('static', filename='lib/js/jquery.min.js')}}"></script>
     <script src="{{ url_for ('static', filename='lib/js/bootstrap.min.js')}}"></script>
