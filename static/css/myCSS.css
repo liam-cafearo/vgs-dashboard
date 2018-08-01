@@ -36,6 +36,7 @@
 }
 
 /* Bar Chart axis styling */
+
 .axis text {
     font: 10px sans-serif;
 }
@@ -46,5 +47,13 @@
     stroke: #000;
     shape-rendering: crispEdges;
 }
+
 /* Chart Styles */
 
+.alignleft {
+    float: left;
+}
+
+.alignright {
+    float: right;
+}
