@@ -90,7 +90,7 @@ function createGraphs(error, videoGameSales) {
 
     // Metric Counters
     var euSalesND = dc.numberDisplay("#number-eu-sales-nd");
-    // var videoGamesND = dc.numberDisplay("#number-video-games-nd");
+    var videoGamesND = dc.numberDisplay("#number-video-games-nd");
     var globalSalesND = dc.numberDisplay("#number-global-sales-nd");
     var jpSalesND = dc.numberDisplay("#number-japan-sales-nd");
     var naSalesND = dc.numberDisplay("#number-na-sales-nd");
@@ -104,12 +104,12 @@ function createGraphs(error, videoGameSales) {
         })
         .group(totalEUSales);
 
-    // videoGamesND
-    //     .formatNumber(d3.format("d"))
-    //     .valueAccessor(function (d) {
-    //         return d;
-    //     })
-    //     .group(totalGames);
+    videoGamesND
+        .formatNumber(d3.format("d"))
+        .valueAccessor(function (d) {
+            return d;
+        })
+        .group(totalGames);
 
     globalSalesND
         .formatNumber(d3.format("d"))
