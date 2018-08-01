@@ -19,13 +19,14 @@
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="/">Video Game Sales Dashboard</a>
+                    <button type="button" class="btn btn-primary btn-md nav-button"> Start Tour!</button>
                 </div>
                 <div>
                     <ul class="nav navbar-nav navbar-right">
                         <!-- is role="presentation" required here? -->
                         <li>
                             <a href="/">
-                                <span class="fas fa-home"></span> Dashboard
+                                <span class="fas fa-chart-bar"></span> Dashboard
                             </a>
                         </li>
                         <li>
@@ -43,22 +44,22 @@
     </div>
     <hr>
     <div id="textbox">
-    <p class="small-text-info alignleft">
-        Code for this Dashboard can be found on
-        <a href="https://github.com/liam-cafearo/vgs-dashboard"> GitHub
-            <span class="fab fa-github-square"></span>
-        </a>
-    </p>
-    <p class="small-text-info alignright">
-        The creator of this dashboard can be found on
-        <a href="https://twitter.com/LCafearo"> Twitter
-            <span class="fab fa-twitter-square"></span>
-        </a>
-        <a href="https://www.linkedin.com/in/liam-cafearo/"> LinkedIn
-            <span class="fab fa-linkedin"></span>
-        </a>
-    </p>
-    <div style="clear: both;"></div>
+        <p class="small-text-info alignleft">
+            Code for this Dashboard can be found on
+            <a href="https://github.com/liam-cafearo/vgs-dashboard"> GitHub
+                <span class="fab fa-github-square"></span>
+            </a>
+        </p>
+        <p class="small-text-info alignright">
+            The creator of this dashboard can be found on
+            <a href="https://twitter.com/LCafearo" target="_blank"> Twitter
+                <span class="fab fa-twitter-square"></span>
+            </a>
+            <a href="https://www.linkedin.com/in/liam-cafearo/" target="_blank"> LinkedIn
+                <span class="fab fa-linkedin"></span>
+            </a>
+        </p>
+        <div style="clear: both;"></div>
     </div>
     <script src="{{ url_for ('static', filename='lib/js/jquery.min.js')}}"></script>
     <script src="{{ url_for ('static', filename='lib/js/bootstrap.min.js')}}"></script>
