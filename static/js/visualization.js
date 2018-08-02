@@ -146,7 +146,7 @@ function createGraphs(error, videoGameSales) {
         .group(totalOtherSales)
         .formatNumber(d3.format(".3s"));
 
-    // TODO ask mentor for advise on this
+    // TODO make rectangles bigger
     yearChart
         // amend values to own spec
         .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
@@ -168,7 +168,8 @@ function createGraphs(error, videoGameSales) {
         .dimension(genreDim)
         .group(numVideoGameGenres)
         .xAxis().ticks(4);
-
+    
+    //  change this to the a dropdown selector.
     // publisherChart
     //     // amend values to own spec
     //     .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
