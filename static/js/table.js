@@ -1,3 +1,7 @@
+var removeAttribute = document.getElementById("load-div")
+
+removeAttribute.style.display = '';
+
 var tabledData = dc.dataTable("#data-table");
 tabledData
     // TODO figure out what dimension to place in here.
