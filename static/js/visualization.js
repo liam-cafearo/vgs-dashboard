@@ -10,11 +10,9 @@ function createGraphs(error, videoGameSales) {
 
     var videoGames = videoGameSales;
     // Doesn't like this formatting, ask for advice.
-    // var dateFormat = d3.time.format("%Y");
-    // videoGames.forEach(function (d) {
-    //     d["Year"] = dateFormat.parse(d["Year"]);
-    //     d["Year"].setDate(1);
-    // })
+    videoGames.forEach(function (d) {
+        d["Year"] = new Date(d["Year"],0,1);
+    })
 
     // Create a Crossfilter instance
     var ndx = crossfilter(videoGames);
@@ -48,29 +46,27 @@ function createGraphs(error, videoGameSales) {
     var totalNumOtherSales = ndx.dimension(function (d) {
         return d["Other_Sales"] ? d["Other_Sales"] : 0;
     });
-    // TODO world sales dim
 
     // Dimensions end
 
     // Metrics start
-    var all = ndx.groupAll();
     var yearReleased = yearDim.group();
     var numVideoGameGenres = genreDim.group();
-    var numVideoGamePublishers = publisherDim.group();
+    // var numVideoGamePublishers = publisherDim.group();
     var numVideoGameSalesByPlatform = platformDim.group();
-    var totalEUSales = totalNumEUSales.group().reduceSum(function (d) {
+    var totalEUSales = totalNumEUSales.groupAll().reduceSum(function (d) {
         return d["EU_Sales"];
     });
-    var totalGlobalSales = totalNumGlobalSales.group().reduceSum(function (d) {
+    var totalGlobalSales = totalNumGlobalSales.groupAll().reduceSum(function (d) {
         return d["Global_Sales"];
     });
-    var totalJPSales = totalNumJPSales.group().reduceSum(function (d) {
+    var totalJPSales = totalNumJPSales.groupAll().reduceSum(function (d) {
         return d["JP_Sales"];
     });
-    var totalNASales = totalNumNASales.group().reduceSum(function (d) {
+    var totalNASales = totalNumNASales.groupAll().reduceSum(function (d) {
         return d["NA_Sales"];
     });
-    var totalOtherSales = totalNumOtherSales.group().reduceSum(function (d) {
+    var totalOtherSales = totalNumOtherSales.groupAll().reduceSum(function (d) {
         return d["Other_Sales"];
     });
 
@@ -84,8 +80,7 @@ function createGraphs(error, videoGameSales) {
 
     var yearChart = dc.barChart("#year-release-bar-chart");
     var genreChart = dc.rowChart("#genre-row-chart");
-    var publisherChart = dc.rowChart("#publisher-row-chart");
-    // TODO insert world map var here
+    // var publisherChart = dc.rowChart("#publisher-row-chart");
     var platformChart = dc.pieChart("#platform-pie-chart");
 
     // Metric Counters
@@ -102,42 +97,48 @@ function createGraphs(error, videoGameSales) {
         .valueAccessor(function (d) {
             return d;
         })
-        .group(totalEUSales);
+        .group(totalEUSales)
+        .formatNumber(d3.format(".3s"));
 
     // videoGamesND
     //     .formatNumber(d3.format("d"))
     //     .valueAccessor(function (d) {
     //         return d;
     //     })
-    //     .group(totalGames);
+    //     .group(totalGames)
+    //     .formatNumber(d3.format(".3s"));
 
     globalSalesND
         .formatNumber(d3.format("d"))
         .valueAccessor(function (d) {
             return d;
         })
-        .group(totalGlobalSales);
+        .group(totalGlobalSales)
+        .formatNumber(d3.format(".3s"));
 
     jpSalesND
         .formatNumber(d3.format("d"))
         .valueAccessor(function (d) {
             return d;
         })
-        .group(totalJPSales);
+        .group(totalJPSales)
+        .formatNumber(d3.format(".3s"));
 
     naSalesND
         .formatNumber(d3.format("d"))
         .valueAccessor(function (d) {
             return d;
         })
-        .group(totalNASales);
+        .group(totalNASales)
+        .formatNumber(d3.format(".3s"));
 
     otherSalesND
         .formatNumber(d3.format("d"))
         .valueAccessor(function (d) {
             return d;
         })
-        .group(totalOtherSales);
+        .group(totalOtherSales)
+        .formatNumber(d3.format(".3s"));
 
     // TODO ask mentor for advise on this
     yearChart
@@ -162,18 +163,18 @@ function createGraphs(error, videoGameSales) {
         .group(numVideoGameGenres)
         .xAxis().ticks(4);
 
-    publisherChart
-        // amend values to own spec
-        .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
-        .width(300)
-        .height(250)
-        .dimension(publisherDim)
-        .group(numVideoGamePublishers)
-        .xAxis().ticks(4);
+    // publisherChart
+    //     // amend values to own spec
+    //     .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
+    //     .width(300)
+    //     .height(250)
+    //     .dimension(publisherDim)
+    //     .group(numVideoGamePublishers)
+    //     .xAxis().ticks(4);
 
-    // TODO world Map properties and values
+    // // TODO world Map properties and values
 
-    // TODO - Need to add svg components to make this a bar chart.
+    // // TODO - Need to add svg components to make this a bar chart.
     platformChart
         // amend values to own spec
         .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
