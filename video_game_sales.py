@@ -15,17 +15,19 @@ COLLECTION_NAME = 'videoGameSales'
 def dataDash():
     return render_template("dataDash.html")
 
+
 @app.route("/dataTable")
 def dataTable():
     return render_template("dataTable.html")
 
+
 @app.route("/vgsJson")
 def vgsJson():
     FIELDS = {
-        '_id': False, 'Name': True, 'Platform': True, 'Year': True,
-        'Genre': True, 'Publisher': True, 'NA_Sales': True,
-        'EU_Sales': True, 'JP_Sales': True, 'Other_Sales': True,
-        'Global_Sales': True
+        '_id': False, 'Rank': True, 'Name': True,
+        'Platform': True, 'Year': True, 'Genre': True,
+        'Publisher': True, 'NA_Sales': True, 'EU_Sales': True,
+        'JP_Sales': True, 'Other_Sales': True, 'Global_Sales': True
     }
 
     with MongoClient(MONGODB_HOST, MONGODB_PORT) as conn:
