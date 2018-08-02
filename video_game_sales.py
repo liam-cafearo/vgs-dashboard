@@ -34,8 +34,6 @@ def vgsJson():
         videoGameSales = collection.find(projection=FIELDS)
         return json.dumps(list(videoGameSales))
 
-# Add code for dataTable here
-
 
 @app.route("/vgsDataTable")
 def vgsDataTable():
