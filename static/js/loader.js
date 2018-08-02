@@ -1,11 +1,11 @@
-var myVar;
+var loaderVar;
 
-function myFunction() {
-    myVar = setTimeout(showPage, 3000);
+function loaderFunction() {
+    loaderVar = setTimeout(displayPage, 3000);
 }
 
-function showPage() {
+function displayPage() {
     document.getElementById("loader").style.display = "none";
     document.getElementById("load-message").style.display = "none";
-    document.getElementById("myDiv").style.display = "block";
+    document.getElementById("load-div").style.display = "block";
 }

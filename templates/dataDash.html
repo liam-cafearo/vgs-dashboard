@@ -1,4 +1,14 @@
-{% extends "index.html" %} {% block content%}
+{% extends "index.html" %} {% block body_attribs %}
+
+<body class="application" onload="loaderFunction()" style="margin:0;"> {% endblock %} {% block styles %}
+<link rel="stylesheet" href="{{ url_for ('static', filename='css/loader.css')}}"> {% endblock %} {% block body %}
+
+<div id="loader"></div>
+<div id="load-message">
+    <h1>Please wait whilst the page loads</h1>
+</div>
+
+{% endblock %} {% block content %}
 <!-- check what the outer id is for -->
 <div id="outer" class="container-fluid">
     <div class="row">
@@ -159,4 +169,5 @@
 </div>
 {% endblock %} {% block scripts %}
 <script src="{{ url_for ('static', filename='js/visualization.js')}}"></script>
+<script src="{{ url_for ('static', filename='js/loader.js')}}"></script>
 {% endblock %}

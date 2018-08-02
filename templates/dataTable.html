@@ -1,4 +1,9 @@
-{% extends "index.html" %} {% block content %}
+{% extends "index.html" %} 
+{% block body_attribs %}
+
+<body class="application"> {% endblock %}
+
+{% block content %}
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
@@ -21,8 +26,7 @@
         </div>
     </div>
 </div>
-{% endblock %}
-{% block scripts %}
+{% endblock %} {% block scripts %}
 <!-- may need to load visualization script before this one -->
 <script src="{{ url_for ('static', filename='js/table.js')}}"></script>
 {% endblock %}
