@@ -46,6 +46,9 @@ function createGraphs(error, videoGameSales) {
     var totalNumOtherSales = ndx.dimension(function (d) {
         return d["Other_Sales"] ? d["Other_Sales"] : 0;
     });
+    var totalNumGames = ndx.dimension(function (d) {
+        return d["Rank"] ? d["Rank"] : 0;
+    })
 
     // Dimensions end
 
@@ -69,6 +72,9 @@ function createGraphs(error, videoGameSales) {
     var totalOtherSales = totalNumOtherSales.groupAll().reduceSum(function (d) {
         return d["Other_Sales"];
     });
+    var totalGames = totalNumGames.groupAll().reduceSum(function (d) {
+        return d["Rank"];
+    })
 
     // Metrics end
 
@@ -85,7 +91,7 @@ function createGraphs(error, videoGameSales) {
 
     // Metric Counters
     var euSalesND = dc.numberDisplay("#number-eu-sales-nd");
-    // var videoGamesND = dc.numberDisplay("#number-video-games-nd");
+    var videoGamesND = dc.numberDisplay("#number-video-games-nd");
     var globalSalesND = dc.numberDisplay("#number-global-sales-nd");
     var jpSalesND = dc.numberDisplay("#number-japan-sales-nd");
     var naSalesND = dc.numberDisplay("#number-na-sales-nd");
@@ -100,13 +106,13 @@ function createGraphs(error, videoGameSales) {
         .group(totalEUSales)
         .formatNumber(d3.format(".3s"));
 
-    // videoGamesND
-    //     .formatNumber(d3.format("d"))
-    //     .valueAccessor(function (d) {
-    //         return d;
-    //     })
-    //     .group(totalGames)
-    //     .formatNumber(d3.format(".3s"));
+    videoGamesND
+        .formatNumber(d3.format("d"))
+        .valueAccessor(function (d) {
+            return d;
+        })
+        .group(totalGames)
+        .formatNumber(d3.format(".3s"));
 
     globalSalesND
         .formatNumber(d3.format("d"))
