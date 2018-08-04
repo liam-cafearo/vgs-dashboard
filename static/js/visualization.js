@@ -151,12 +151,14 @@ function createGraphs(error, videoGameSales) {
         // amend values to own spec
         .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
         .width(700)
-        .height(250)
-        .margins({top: 10, right: 50, bottom: 30, left: 40})
+        .height(300)
+        .brushOn(false)
+        .margins({top: 30, right: 50, bottom: 30, left: 40})
         .dimension(yearDim)
         .group(yearReleased)
         .x(d3.time.scale().domain([minYear, maxYear]))
         .elasticY(true)
+        .renderHorizontalGridLines(true)
         .xAxisLabel("Year")
         .yAxis().ticks(8);
 
