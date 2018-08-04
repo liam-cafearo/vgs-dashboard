@@ -195,8 +195,11 @@ function createGraphs(error, videoGameSales) {
     // Data Table
     var tabledData = dc.dataTable("#data-table");
     tabledData
-        // TODO figure out what dimension to place in here.
-        .dimension()
+        .dimension(yearDim)
+        .group(function (d) {
+            // format the date as d/m/YYYY, add +1 to month as JS months are zero based.
+            return d.Year.getDate() + "/" + (d.Year.getMonth() + 1) + "/" + d.Year.getFullYear();
+        })
         .columns([
             function (d) {
                 return d.Name;
@@ -205,7 +208,7 @@ function createGraphs(error, videoGameSales) {
                 return d.Platform;
             },
             function (d) {
-                return d.Year;
+                return d.Year.getDate() + "/" + (d.Year.getMonth() + 1) + "/" + d.Year.getFullYear();
             },
             function (d) {
                 return d.Genre;
