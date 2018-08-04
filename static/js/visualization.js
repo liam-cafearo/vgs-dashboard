@@ -11,7 +11,7 @@ function createGraphs(error, videoGameSales) {
     var videoGames = videoGameSales;
     // Doesn't like this formatting, ask for advice.
     videoGames.forEach(function (d) {
-        d["Year"] = new Date(d["Year"],0,1);
+        d["Year"] = new Date(d["Year"], 0, 1);
     })
 
     // Create a Crossfilter instance
@@ -168,7 +168,7 @@ function createGraphs(error, videoGameSales) {
         .dimension(genreDim)
         .group(numVideoGameGenres)
         .xAxis().ticks(4);
-    
+
     //  change this to the a dropdown selector.
     // publisherChart
     //     // amend values to own spec
@@ -191,6 +191,44 @@ function createGraphs(error, videoGameSales) {
         .transitionDuration(1500)
         .dimension(platformDim)
         .group(numVideoGameSalesByPlatform);
+
+    // Data Table
+    var tabledData = dc.dataTable("#data-table");
+    tabledData
+        // TODO figure out what dimension to place in here.
+        .dimension()
+        .columns([
+            function (d) {
+                return d.Name;
+            },
+            function (d) {
+                return d.Platform;
+            },
+            function (d) {
+                return d.Year;
+            },
+            function (d) {
+                return d.Genre;
+            },
+            function (d) {
+                return d.Publisher;
+            },
+            function (d) {
+                return d.NA_Sales;
+            },
+            function (d) {
+                return d.EU_Sales;
+            },
+            function (d) {
+                return d.JP_Sales;
+            },
+            function (d) {
+                return d.Other_Sales;
+            },
+            function (d) {
+                return d.Global_Sales;
+            }
+        ]);
 
     dc.renderAll();
 };
