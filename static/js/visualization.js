@@ -150,7 +150,7 @@ function createGraphs(error, videoGameSales) {
     yearChart
         // amend values to own spec
         .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
-        .width(600)
+        .width(700)
         .height(250)
         .dimension(yearDim)
         .group(yearReleased)
