@@ -55,7 +55,7 @@ function createGraphs(error, videoGameSales) {
     // Metrics start
     var yearReleased = yearDim.group();
     var numVideoGameGenres = genreDim.group();
-    // var numVideoGamePublishers = publisherDim.group();
+    var pubGroup = publisherDim.group();
     var numVideoGameSalesByPlatform = platformDim.group();
     var totalEUSales = totalNumEUSales.groupAll().reduceSum(function (d) {
         return d["EU_Sales"];
@@ -86,7 +86,7 @@ function createGraphs(error, videoGameSales) {
 
     var yearChart = dc.barChart("#year-release-bar-chart");
     var genreChart = dc.rowChart("#genre-row-chart");
-    // var publisherChart = dc.rowChart("#publisher-row-chart");
+    var publisherSelect = dc.selectMenu("#publisher-select-menu");
     var platformChart = dc.pieChart("#platform-pie-chart");
 
     // Metric Counters
@@ -169,15 +169,9 @@ function createGraphs(error, videoGameSales) {
         .group(numVideoGameGenres)
         .xAxis().ticks(4);
 
-    // TODO change to the drop down selector.
-    // publisherChart
-    //     // amend values to own spec
-    //     .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
-    //     .width(300)
-    //     .height(250)
-    //     .dimension(publisherDim)
-    //     .group(numVideoGamePublishers)
-    //     .xAxis().ticks(4);
+    publisherSelect
+        .dimension(publisherDim)
+        .group(pubGroup);
 
 
     // TODO Change to row or line chart
@@ -199,6 +193,7 @@ function createGraphs(error, videoGameSales) {
             // format the date as d/m/YYYY, add +1 to month as JS months are zero based.
             return d.Year.getDate() + "/" + (d.Year.getMonth() + 1) + "/" + d.Year.getFullYear();
         })
+        .size(50)
         .columns([
             function (d) {
                 return d.Name;
