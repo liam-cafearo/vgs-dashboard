@@ -169,7 +169,7 @@ function createGraphs(error, videoGameSales) {
         .group(numVideoGameGenres)
         .xAxis().ticks(4);
 
-    //  change this to the a dropdown selector.
+    // TODO change to the drop down selector.
     // publisherChart
     //     // amend values to own spec
     //     .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
@@ -179,9 +179,8 @@ function createGraphs(error, videoGameSales) {
     //     .group(numVideoGamePublishers)
     //     .xAxis().ticks(4);
 
-    // // TODO world Map properties and values
 
-    // // TODO - Need to add svg components to make this a bar chart.
+    // TODO Change to row or line chart
     platformChart
         // amend values to own spec
         .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
