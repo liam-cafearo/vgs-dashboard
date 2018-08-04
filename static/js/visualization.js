@@ -152,13 +152,13 @@ function createGraphs(error, videoGameSales) {
         .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
         .width(700)
         .height(250)
+        .margins({top: 10, right: 50, bottom: 30, left: 40})
         .dimension(yearDim)
         .group(yearReleased)
-        .transitionDuration(500)
         .x(d3.time.scale().domain([minYear, maxYear]))
         .elasticY(true)
         .xAxisLabel("Year")
-        .yAxis().ticks(4);
+        .yAxis().ticks(8);
 
     genreChart
         // amend values to own spec
