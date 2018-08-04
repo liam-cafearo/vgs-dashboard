@@ -87,7 +87,7 @@ function createGraphs(error, videoGameSales) {
     var yearChart = dc.barChart("#year-release-bar-chart");
     var genreChart = dc.rowChart("#genre-row-chart");
     var publisherSelect = dc.selectMenu("#publisher-select-menu");
-    var platformChart = dc.pieChart("#platform-pie-chart");
+    var platformChart = dc.rowChart("#platform-row-chart");
 
     // Metric Counters
     var euSalesND = dc.numberDisplay("#number-eu-sales-nd");
@@ -151,7 +151,7 @@ function createGraphs(error, videoGameSales) {
         // amend values to own spec
         .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
         .width(600)
-        .height(160)
+        .height(250)
         .dimension(yearDim)
         .group(yearReleased)
         .transitionDuration(500)
@@ -163,7 +163,7 @@ function createGraphs(error, videoGameSales) {
     genreChart
         // amend values to own spec
         .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
-        .width(300)
+        .width(700)
         .height(250)
         .dimension(genreDim)
         .group(numVideoGameGenres)
@@ -176,14 +176,12 @@ function createGraphs(error, videoGameSales) {
 
     // TODO Change to row or line chart
     platformChart
-        // amend values to own spec
         .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
-        .height(220)
-        .radius(90)
-        // .innerRadius(40)
-        .transitionDuration(1500)
+        .width(700)
+        .height(600)
         .dimension(platformDim)
-        .group(numVideoGameSalesByPlatform);
+        .group(numVideoGameSalesByPlatform)
+        .xAxis().ticks(4);
 
     // Data Table
     var tabledData = dc.dataTable("#data-table");
