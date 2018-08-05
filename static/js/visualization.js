@@ -226,6 +226,7 @@ function createGraphs(error, videoGameSales) {
         d.Year.getFullYear()
       );
     })
+    .size(Infinity)
     .columns([
       function (d) {
         return d.Name;
@@ -264,7 +265,47 @@ function createGraphs(error, videoGameSales) {
         return d.Global_Sales;
       }
     ])
+    .sortBy(function (d) {
+      return d["Year"];
+    })
+    .order(d3.ascending);
 
+  dataSlice();
   dc.renderAll();
+
+  // Data table pagination
+  var pageStart = 0;
+  var pageEntries = 15;
+
+  function pageSelect() {
+    d3.select('#current-record-set')
+      .text(pageStart);
+    d3.select('#total-records')
+      .text(pageStart + pageEntries - 1);
+    d3.select('#previous-page')
+      .attr('disabled', pageStart - pageEntries < 0 ? 'true' : null);
+    d3.select('#next-page')
+      .attr('disabled', pageStart + pageEntries > ndx.size() ? 'true' : null);
+    d3.select('#db-size')
+      .text(ndx.size());
+  }
+
+  function dataSlice() {
+    tabledData.beginSlice(pageStart);
+    tabledData.endSlice(pageStart + pageEntries);
+    pageSelect();
+  }
+
+  function nextTable() {
+    pageStart += pageEntries;
+    dataSlice();
+    tabledData.redraw();
+  }
+
+  function prevTable() {
+    pageStart -= pageEntries;
+    dataSlice();
+    tabledData.redraw();
+  }
 
 }
