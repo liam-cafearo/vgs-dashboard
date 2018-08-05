@@ -263,7 +263,8 @@ function createGraphs(error, videoGameSales) {
       function (d) {
         return d.Global_Sales;
       }
-    ]);
+    ])
 
   dc.renderAll();
+
 }
