@@ -7,8 +7,8 @@
                 <!-- EU Sales Metric -->
                 <!-- will need to play around with col-sm size -->
                 <div class="col-sm-4">
-                    <div class="chart-wrapper" data-step="1" data-intro="This counter shows the total number of sales in the European Union." style="font-weight: normal"
-                        data-position="right">
+                    <div class="chart-wrapper" data-step="1" data-intro="This counter shows the total number of sales in the European Union."
+                        style="font-weight: normal" data-position="right">
                         <div class="chart-title">
                             Total Number of EU Sales
                         </div>
@@ -21,8 +21,8 @@
 
                 <!-- Video Games in Collection Metric -->
                 <div class="col-sm-4">
-                    <div class="chart-wrapper" data-step="2" data-intro="This counter shows the total number of video games in the collection." style="font-weight: normal"
-                    data-position="right">
+                    <div class="chart-wrapper" data-step="2" data-intro="This counter shows the total number of video games in the collection."
+                        style="font-weight: normal" data-position="right">
                         <div class="chart-title">
                             Total Number of Video Games in Collection
                         </div>
@@ -36,7 +36,7 @@
                 <!-- Global Sales Metric -->
                 <div class="col-sm-4">
                     <div class="chart-wrapper" data-step="3" data-intro="This counter shows the total number of global sales." style="font-weight: normal"
-                    data-position="left">
+                        data-position="left">
                         <div class="chart-title">
                             Total Number of Global Sales
                         </div>
@@ -50,7 +50,7 @@
                 <!-- Japan Sales Metric -->
                 <div class="col-sm-4">
                     <div class="chart-wrapper" data-step="4" data-intro="This counter shows the total number of sales in Japan." style="font-weight: normal"
-                    data-position="right">
+                        data-position="right">
                         <div class="chart-title">
                             Total Number of Japan Sales
                         </div>
@@ -65,7 +65,7 @@
                 <!-- North American Sales Metric -->
                 <div class="col-sm-4">
                     <div class="chart-wrapper" data-step="5" data-intro="This counter shows the total number of sales in North America." style="font-weight: normal"
-                    data-position="right">
+                        data-position="right">
                         <div class="chart-title">
                             Total Number of North America Sales
                         </div>
@@ -78,8 +78,8 @@
 
                 <!-- Other Sales Metric-->
                 <div class="col-sm-4">
-                    <div class="chart-wrapper"data-step="6" data-intro="This counter shows the total number of other sales around the world." style="font-weight: normal"
-                    data-position="left">
+                    <div class="chart-wrapper" data-step="6" data-intro="This counter shows the total number of other sales around the world."
+                        style="font-weight: normal" data-position="left">
                         <div class="chart-title">
                             Total Number of Other Sales
                         </div>
@@ -96,8 +96,8 @@
             <div class="row">
                 <!-- Platform Row Chart -->
                 <div class="col-sm-6">
-                    <div class="chart-wrapper" data-step="7" data-intro="This row chart shows the number of sales by platform. Select a platform to see how the other charts and metrics change." style="font-weight: normal"
-                    data-position="right">
+                    <div class="chart-wrapper" data-step="7" data-intro="This row chart shows the number of sales by platform. Select a platform to see how the other charts and metrics change."
+                        style="font-weight: normal" data-position="right">
                         <div class="chart-title">
                             Game Platform
                         </div>
@@ -110,8 +110,8 @@
 
                 <!-- Publisher Select Menu -->
                 <div class="col-sm-6">
-                    <div class="chart-wrapper" data-step="8" data-intro="Use this select menu to select a publisher. Select a publisher to see how the other charts and metrics change." style="font-weight: normal"
-                    data-position="right">
+                    <div class="chart-wrapper" data-step="8" data-intro="Use this select menu to select a publisher. Select a publisher to see how the other charts and metrics change."
+                        style="font-weight: normal" data-position="right">
                         <div class="chart-title">
                             Publisher
                         </div>
@@ -125,8 +125,8 @@
 
                 <!-- Year of Release Chart -->
                 <div class="col-sm-6">
-                    <div class="chart-wrapper" data-step="9" data-intro="This bar chart shows how many games were released in a particular year. Select a platform to see how the other charts and metrics change." style="font-weight: normal"
-                    data-position="right">
+                    <div class="chart-wrapper" data-step="9" data-intro="This bar chart shows how many games were released in a particular year. Select a platform to see how the other charts and metrics change."
+                        style="font-weight: normal" data-position="right">
                         <div class="chart-title">
                             Year of Release
                         </div>
@@ -139,8 +139,8 @@
 
                 <!-- Game Genre Chart -->
                 <div class="col-sm-6">
-                    <div class="chart-wrapper" data-step="10" data-intro="This row chart shows the number of sales by game genre. Select a platform to see how the other charts and metrics change." style="font-weight: normal"
-                    data-position="right">
+                    <div class="chart-wrapper" data-step="10" data-intro="This row chart shows the number of sales by game genre. Select a platform to see how the other charts and metrics change."
+                        style="font-weight: normal" data-position="right">
                         <div class="chart-title">
                             Game Genre
                         </div>
@@ -154,8 +154,8 @@
         </div>
 
         <div style="clear: both" class="col-sm-12">
-            <div id="data-table-link" class="chart-wrapper" data-step="11" data-intro="This table shows all the data used in the charts above. Interacting with the charts above will change what data is displayed in the table." 
-            style="font-weight: normal" data-position="top">
+            <div id="data-table-link" class="chart-wrapper" data-step="11" data-intro="This table shows all the data used in the charts above. Interacting with the charts above will change what data is displayed in the table."
+                style="font-weight: normal" data-position="top">
                 <div class="chart-title">
                     Data Table
                 </div>
@@ -176,6 +176,14 @@
                             </tr>
                         </thead>
                     </table>
+                    <div id="paging">
+                        Showing
+                        <span id="current-record-set"></span>
+                        <span id="total-records"></span> of
+                        <span id="db-size"></span>.
+                        <input id="previous-page" type="button" class="Button" value="Previous" onclick="javascript:prevTable()" />
+                        <input id="next-page" type="button" class="Button" value="Next" onclick="javascript:nextTable()" />
+                    </div>
                 </div>
             </div>
         </div>
