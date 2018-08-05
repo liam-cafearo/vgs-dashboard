@@ -156,6 +156,13 @@ function createGraphs(error, videoGameSales) {
     .dimension(yearDim)
     .group(yearReleased)
     .x(d3.time.scale().domain([minYear, maxYear]))
+    // makes bars thicker, solution found on StackOverflow mentioned in README
+    .xUnits(function(){return 40;})
+    // makes the bar chart clickable, solution found on StackOverflow and mentioned in README
+    .on("renderlet", function(yearChart) {
+      yearChart.selectAll("rect.bar").on("click", yearChart.onClick)
+    })
+    .centerBar(true)
     .elasticY(true)
     .renderHorizontalGridLines(true)
     .xAxisLabel("Year")
