@@ -145,7 +145,10 @@ function createGraphs(error, videoGameSales) {
     .group(totalOtherSales)
     .formatNumber(d3.format(".3s"));
 
-  // TODO make rectangles bigger
+  // Select Menu
+  publisherSelect.dimension(publisherDim).group(pubGroup);
+
+  // Year Bar Chart
   yearChart
     // amend values to own spec
     .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
@@ -176,23 +179,34 @@ function createGraphs(error, videoGameSales) {
     .yAxis()
     .ticks(8);
 
+  // Genre Row Chart
   genreChart
     // amend values to own spec
     .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
     .width(700)
-    .height(250)
+    .height(300)
+    .margins({
+      top: 30,
+      right: 50,
+      bottom: 30,
+      left: 40
+    })
     .dimension(genreDim)
     .group(numVideoGameGenres)
     .xAxis()
     .ticks(4);
 
-  publisherSelect.dimension(publisherDim).group(pubGroup);
-
-  // TODO Change to row or line chart
+  // Platform Row Chart
   platformChart
     .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
     .width(700)
-    .height(600)
+    .height(727)
+    .margins({
+      top: 30,
+      right: 50,
+      bottom: 30,
+      left: 40
+    })
     .dimension(platformDim)
     .group(numVideoGameSalesByPlatform)
     .xAxis()
@@ -212,7 +226,6 @@ function createGraphs(error, videoGameSales) {
         d.Year.getFullYear()
       );
     })
-    .size(50)
     .columns([
       function (d) {
         return d.Name;
