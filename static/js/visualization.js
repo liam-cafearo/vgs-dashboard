@@ -275,7 +275,7 @@ function createGraphs(error, videoGameSales) {
 
   // Data table pagination
   var pageStart = 0;
-  var pageEntries = 15;
+  var pageEntries = 25;
 
   function pageSelect() {
     d3.select('#current-record-set')
@@ -285,7 +285,7 @@ function createGraphs(error, videoGameSales) {
     d3.select('#previous-page')
       .attr('disabled', pageStart - pageEntries < 0 ? 'true' : null);
     d3.select('#next-page')
-      .attr('disabled', pageStart + pageEntries > ndx.size() ? 'true' : null);
+      .attr('disabled', pageStart + pageEntries >= ndx.size() ? 'true' : null);
     d3.select('#db-size')
       .text(ndx.size());
   }
@@ -296,16 +296,15 @@ function createGraphs(error, videoGameSales) {
     pageSelect();
   }
 
-  function nextTable() {
+  document.getElementById("previous-page").addEventListener("click", function nextTable() {
     pageStart += pageEntries;
     dataSlice();
     tabledData.redraw();
-  }
+  })
 
-  function prevTable() {
+  document.getElementById("next-page").addEventListener("click", function prevTable() {
     pageStart -= pageEntries;
     dataSlice();
     tabledData.redraw();
-  }
-
+  })
 }
