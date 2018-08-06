@@ -286,8 +286,8 @@ function createGraphs(error, videoGameSales) {
 
     document.getElementById("records-total").innerHTML = ndx.size();
 
-    d3.select("page-prev").attr('disabled', pageStart-pageEntries < 0 ? 'true' : null);
-    d3.select("page-next").attr('disabled', pageStart+pageEntries >= ndx.size() ? 'true' : null);
+    d3.select("#page-prev").attr('disabled', pageStart-pageEntries < 0 ? 'true' : null);
+    d3.select("#page-next").attr('disabled', pageStart+pageEntries >= ndx.size() ? 'true' : null);
   }
 
   function pageUpdate() {
