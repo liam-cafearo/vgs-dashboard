@@ -155,7 +155,7 @@ function createGraphs(error, videoGameSales) {
   // Year Bar Chart
   yearChart
     // amend values to own spec
-    .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
+    .ordinalColors(["#0000ff", "#00ff00", "#ff0000", "#ffa500", "#FFFF00"])
     .width(700)
     .height(300)
     .brushOn(false)
@@ -186,7 +186,7 @@ function createGraphs(error, videoGameSales) {
   // Genre Row Chart
   genreChart
     // amend values to own spec
-    .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
+    .ordinalColors(["#0000ff", "#00ff00", "#ff0000", "#ffa500", "#FFFF00"])
     .width(700)
     .height(300)
     .margins({
@@ -202,7 +202,7 @@ function createGraphs(error, videoGameSales) {
 
   // Platform Row Chart
   platformChart
-    .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
+    .ordinalColors(["#0000ff", "#00ff00", "#ff0000", "#ffa500", "#FFFF00"])
     .width(700)
     .height(727)
     .margins({
