@@ -274,7 +274,7 @@ function createGraphs(error, videoGameSales) {
     })
     .order(d3.ascending);
 
-  pageUpdate();
+  pageUpdate()
   dc.renderAll();
 
   // Data table pagination
