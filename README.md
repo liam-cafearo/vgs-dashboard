@@ -8,6 +8,7 @@
         - [What and Who is this website for?](#what-and-who-is-this-website-for)
     - [UX](#ux)
         - [Retailer Persona](#retailer-persona)
+        - [Actions the persona may carry out](#actions-the-persona-may-carry-out)
         - [Mockups](#mockups)
     - [Features](#features)
         - [Existing Features](#existing-features)
@@ -50,6 +51,8 @@ To begin with I focused on one type of persona rather than many. If the dashboar
 - **The goals and tasks they are trying to complete using the site:** Zach wants to see what platforms and genres are most popular within a given year. He also wants to see how sales compared between different countries.
 - **Frequency of use:** how often are they likely to use the site: On a regular basis as this will provide insights to what games stores should be stocking.
 - **A quote that sums up what matters most to the persona as it relates to your site:** Zach wants an efficient way to collate data on video game sales within different countries.
+
+### Actions the persona may carry out
 
 - As a Area Manager for a retail store who wants to find out about video games sales, I'd like to see the total number of EU sales.
 - As a Area Manager for a retail store who wants to find out about video games sales, I'd like to see the total number of Japan sales.
