@@ -92,7 +92,7 @@ There are no more features left to implement as the project is now ready for mar
 - CSS3
   - I have used some custom CSS to build on top of the styling provided by Bootstrap, introJs.css, dc.css and keen.css.
 - [Bootstrap](http://getbootstrap.com)
-  - I have used bootstrap to give my website a clean and responsive layout.
+  - I have used Bootstrap v3.2.0 to give my website a clean and responsive layout.
 - JavaScript
   - I used some vanilla JS to get the pagination next and previous buttons working correctly. However the main bulk of the JavaScript makes use of the other JavaScript libraries included in this project.
 - [crossfilter.js](https://square.github.io/crossfilter/)
