@@ -277,7 +277,8 @@ function createGraphs(error, videoGameSales) {
   pageUpdate()
   dc.renderAll();
 
-  // Data table pagination
+  // Data table pagination inspired by the documentation here:
+  // https://steemit.com/utopian-io/@faad/tutorial-13-dive-into-dc-js-a-javascript-library-data-table-pagination
 
   function showResults() {
     document.getElementById("records-start").innerHTML = pageStart;
