@@ -63,7 +63,7 @@ To begin with I focused on one type of persona rather than many. If the dashboar
 - As a Area Manager for a retail store who wants to find out about video games sales, I'd like to know what year sold the most games
 - As a Area Manager for a retail store who wants to find out about video games sales, I'd like to see what platform the most games were sold on.
 - As a Area Manager for a retail store who wants to find out about video games sales, I'd like to see what genre sold the most games.
-- As a Area Manager for a retail store who wants to find out about video games sales, I'd like to see a map to visualise what countries the games were sold in.
+- As a Area Manager for a retail store who wants to find out about video games sales, I'd like to see a map to visualize what countries the games were sold in.
 
 ### Mockups
 
@@ -86,6 +86,37 @@ I also create some mockups of the site which can be viewed in the folder named '
 There are no more features left to implement as the project is now ready for marking.
 
 ## Technologies Used
+
+- HTML5
+  - This provides the basic layout of the webpage.
+- CSS3
+  - I have used some custom CSS to build on top of the styling provided by Bootstrap, introJs.css, dc.css and keen.css.
+- [Bootstrap](http://getbootstrap.com)
+  - I have used bootstrap to give my website a clean and responsive layout.
+- JavaScript
+  - I used some vanilla JS to get the pagination next and previous buttons working correctly. However the main bulk of the JavaScript makes use of the other JavaScript libraries included in this project.
+- [crossfilter.js](https://square.github.io/crossfilter/)
+  - I used v1.3.5 to manipulate the data and enable two way data binding.
+- [d3.js](https://d3js.org/)
+  - I use D3 v3.5.3 to render interactive charts and graphs based on the data I supplied.
+- [dc.js](https://dc-js.github.io/dc.js/)
+  - I use dc.js v2.1.10 to make plotting the charts easier.
+- [intro.js](https://introjs.com/)
+    - I use intro.js v2.9.3 to create an onboarding process for the dashboard
+- [keen.js](https://github.com/keen/dashboards)
+    - Used in conjunction with bootstrap to build a dashboard template.
+- [queue.js](https://github.com/d3/d3-queue)
+- - Queue.js helps with the asynchronous functions within JavaScript.
+- [Python](https://www.python.org/)
+  - I used Python v2.7.15 along with the Flask micro framework and pymongo module to handle the connection to the MongoDB database, the app routing and template rendering.
+- [Flask](http://flask.pocoo.org/)
+  - I used Flask v1.0.2 to build a server that handles the interaction with MongoDB and render the templates. It also allowed me to use template inheritance which made it easier to manage the source code but also makes it easier to add in further functionality in the future if required.
+- [pymongo](https://api.mongodb.com/python/current/)
+  - I used pymongo v3.7.1 module which acted as the driver for the connection to the MongoDB database.
+- [MongoDB](https://www.mongodb.com/)
+  - I used MongoDB v4.0.0 to create a database that holds the data for the Video Game Sales dashboard.
+- [Heroku](https://www.heroku.com/)
+    - Used to deploy and host the dashboard.
 
 ## Testing
 
