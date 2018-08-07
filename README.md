@@ -102,9 +102,9 @@ There are no more features left to implement as the project is now ready for mar
 - [dc.js](https://dc-js.github.io/dc.js/)
   - I use dc.js v2.1.10 to make plotting the charts easier.
 - [intro.js](https://introjs.com/)
-    - I use intro.js v2.9.3 to create an onboarding process for the dashboard
+  - I use intro.js v2.9.3 to create an onboarding process for the dashboard
 - [keen.js](https://github.com/keen/dashboards)
-    - Used in conjunction with bootstrap to build a dashboard template.
+  - Used in conjunction with bootstrap to build a dashboard template.
 - [queue.js](https://github.com/d3/d3-queue)
 - - Queue.js helps with the asynchronous functions within JavaScript.
 - [Python](https://www.python.org/)
@@ -116,7 +116,7 @@ There are no more features left to implement as the project is now ready for mar
 - [MongoDB](https://www.mongodb.com/)
   - I used MongoDB v4.0.0 to create a database that holds the data for the Video Game Sales dashboard.
 - [Heroku](https://www.heroku.com/)
-    - Used to deploy and host the dashboard.
+  - Used to deploy and host the dashboard.
 
 ## Testing
 
