@@ -73,7 +73,17 @@ I also create some mockups of the site which can be viewed in the folder named '
 
 ### Existing Features
 
+- loading page whilst data loads, this prevents visitors from thinking the webpage is broken.
+- There are six metrics, five for EU, North America, Japan, Global and other sales and one that denotes the total number of games in the collection. This allows the user to see figures based on these categories and can manipulate them depending on what factors they choose in the charts.
+- The year of sales chart allows the user to see the total number of games sold in a particular year and can interactive with the chart to display different data depending on what year(s) they choose.
+- The genre chart allows the user to see the total number of games sold in a particular genre and can interactive with the chart to display different data depending on what genre(s) they choose.
+- The platform chart allows the user to see the total number of games sold on a particular platform and can interactive with the chart to display different data depending on what platform(s) they choose.
+- The publisher select menu allows the user to see the total number of games sold by a particular publisher and can interactive with the chart to display different data depending on what publisher(s) they choose.
+- The data table shows all of the data within the data set. The user can use the pagination links at the bottom of the table to scroll through the data and table will also change depending on what is selected from the charts.
+
 ### Features Left to Implement
+
+There are no more features left to implement as the project is now ready for marking.
 
 ## Technologies Used
 
