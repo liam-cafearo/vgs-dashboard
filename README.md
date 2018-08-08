@@ -15,6 +15,12 @@
     - [Features Left to Implement](#features-left-to-implement)
   - [Technologies Used](#technologies-used)
   - [Testing](#testing)
+    - [Scenario One: Dashboard Tour](#scenario-one-dashboard-tour)
+      - [Scenario Steps](#scenario-steps)
+      - [Desired Outcomes](#desired-outcomes)
+    - [Scenario Two: Clickable charts that interact with each other.](#scenario-two-clickable-charts-that-interact-with-each-other)
+      - [Scenario Steps](#scenario-steps)
+      - [Desired Outcomes](#desired-outcomes)
   - [Deployment](#deployment)
     - [Heroku Setup](#heroku-setup)
     - [MongoDB with Heroku Addons](#mongodb-with-heroku-addons)
@@ -126,6 +132,34 @@ There are no more features left to implement as the project is now ready for mar
 
 ## Testing
 
+For the dashboard I haven't automated any tests however I carried out scenario based tests to ensure that the site works as user may expect it to. The scenarios are listed below:
+
+### Scenario One: Dashboard Tour
+
+#### Scenario Steps
+
+1.  From the home page click on the "Start tour" button.
+2.  Navigated through the tooltips one at a time also checked that the "skip" button worked.
+3.  Checked that each tooltip had the correct description.
+4.  Checked that the tooltips were navigating in the correct order.
+
+#### Desired Outcomes
+
+If successful the user should be able to start the dashboard tour, navigate through each tooltip and learn about how the can interact with the dashboard.
+
+### Scenario Two: Clickable charts that interact with each other.
+
+#### Scenario Steps
+
+1.  From the home page select some specific factors from the charts i.e. platform, year etc.
+2.  Check to see if the other charts have change when selecting these different factors.
+3.  Try selecting more factors.
+4.  Check to see if the other charts have change when selecting these different factors.
+
+#### Desired Outcomes
+
+If successful the user should be able to click on the charts and select specific details such as platform, year etc, they should also see the other charts respond to the change in data.
+
 ## Deployment
 
 ### Heroku Setup
@@ -177,6 +211,7 @@ git add video_game_sales.py
 git commit -m "Connected to MongDB"
 git push heroku master
 ```
+
 12. I then ran `heroku open` from the command line and the dashboard successfully opened in the browser.
 
 ## Credits
