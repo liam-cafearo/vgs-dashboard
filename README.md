@@ -83,7 +83,7 @@ To begin with I focused on one type of persona rather than many. If the dashboar
 
 ### Mockups
 
-I also create some mockups of the site which can be viewed in the folder named 'mockups' of this GitHub repository.
+I also created some mockups of the site which can be viewed in the folder named 'mockups' of this GitHub repository.
 
 ## Features
 
