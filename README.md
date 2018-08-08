@@ -3,23 +3,23 @@
 ## Table of contents
 
 - [Video Game Sales Dashboard](#video-game-sales-dashboard)
-    - [Table of contents](#table-of-contents)
-    - [Overview](#overview)
-        - [What and Who is this website for?](#what-and-who-is-this-website-for)
-    - [UX](#ux)
-        - [Retailer Persona](#retailer-persona)
-        - [Actions the persona may carry out](#actions-the-persona-may-carry-out)
-        - [Mockups](#mockups)
-    - [Features](#features)
-        - [Existing Features](#existing-features)
-        - [Features Left to Implement](#features-left-to-implement)
-    - [Technologies Used](#technologies-used)
-    - [Testing](#testing)
-    - [Deployment](#deployment)
-    - [Credits](#credits)
-        - [Content](#content)
-        - [Media](#media)
-        - [Acknowledgements](#acknowledgements)
+  - [Table of contents](#table-of-contents)
+  - [Overview](#overview)
+    - [What and Who is this website for?](#what-and-who-is-this-website-for)
+  - [UX](#ux)
+    - [Retailer Persona](#retailer-persona)
+    - [Actions the persona may carry out](#actions-the-persona-may-carry-out)
+    - [Mockups](#mockups)
+  - [Features](#features)
+    - [Existing Features](#existing-features)
+    - [Features Left to Implement](#features-left-to-implement)
+  - [Technologies Used](#technologies-used)
+  - [Testing](#testing)
+  - [Deployment](#deployment)
+  - [Credits](#credits)
+    - [Content](#content)
+    - [Media](#media)
+    - [Acknowledgements](#acknowledgements)
 
 ## Overview
 
@@ -117,10 +117,18 @@ There are no more features left to implement as the project is now ready for mar
   - I used MongoDB v4.0.0 to create a database that holds the data for the Video Game Sales dashboard.
 - [Heroku](https://www.heroku.com/)
   - Used to deploy and host the dashboard.
+- [gunicorn](http://gunicorn.org/)
+  - Used for running HTTP servers on UNIX based operating systems as Heroku uses Ubuntu Server.
 
 ## Testing
 
 ## Deployment
+
+The project asks that you use Heroku to host your website or another hosting service. I chose Heroku as we had used that in a previous lesson and therefore had the tools necessary already to deploy the website to Heroku. The instructions to install Heroku can be found [here](https://devcenter.heroku.com/articles/heroku-cli).
+
+1.  To being the deployment I used Heroku via the command line to provision some server space by running the command `heroku create`. Heroku then creates an app a with an address and git remote location.
+2.  I then installed gunicorn from the command line from within my virtualenv by running the command `pip install gunicorn`.
+3.  Then I made sure that all my dependencies had been added to a requirements.txt file. Whilst still in my virtualenv I ran the following command `pip freeze --local > requirements.txt`. `pip freeze` lists all the installed packages in a format that pip can use. The `--local` gives us a list of installed packages only within the virtualenv. The command `> requirements.txt` store the output into a file called requirements.txt.
 
 ## Credits
 
