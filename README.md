@@ -18,7 +18,7 @@
     - [Scenario One: Dashboard Tour](#scenario-one-dashboard-tour)
       - [Scenario Steps](#scenario-steps)
       - [Desired Outcomes](#desired-outcomes)
-    - [Scenario Two: Clickable charts/selectors that interact with each other.](#scenario-two-clickable-chartsselectors-that-interact-with-each-other)
+    - [Scenario Two: Clickable charts and selectors that interact with each other.](#scenario-two-clickable-charts-and-selectors-that-interact-with-each-other)
       - [Scenario Steps](#scenario-steps)
       - [Desired Outcomes](#desired-outcomes)
     - [Scenario Three: Interactive Data Table](#scenario-three-interactive-data-table)
@@ -155,14 +155,14 @@ For the dashboard I haven't automated any tests however I carried out scenario b
 
 If successful the user should be able to start the dashboard tour, navigate through each tooltip and learn about how the can interact with the dashboard.
 
-### Scenario Two: Clickable charts/selectors that interact with each other.
+### Scenario Two: Clickable charts and selectors that interact with each other.
 
 #### Scenario Steps
 
 1.  From the home page select some specific data factors from the charts i.e. platform, year etc.
-2.  Check to see if the other charts/metrics have change when selecting these different data factors.
+2.  Check to see if the other charts and metrics have change when selecting these different data factors.
 3.  Try selecting more data factors.
-4.  Check to see if the other charts/metrics have change when selecting these different data factors.
+4.  Check to see if the other charts and metrics have change when selecting these different data factors.
 
 #### Desired Outcomes
 
