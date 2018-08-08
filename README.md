@@ -128,7 +128,7 @@ The project asks that you use Heroku to host your website or another hosting ser
 
 1.  To being the deployment I used Heroku via the command line to provision some server space by running the command `heroku create`. Heroku then creates an app a with an address and git remote location.
 2.  I then installed gunicorn from the command line from within my virtualenv by running the command `pip install gunicorn`.
-3.  Then I made sure that all my dependencies had been added to a requirements.txt file. Whilst still in my virtualenv I ran the following command `pip freeze --local > requirements.txt`. `pip freeze` lists all the installed packages in a format that pip can use. The `--local` gives us a list of installed packages only within the virtualenv. The command `> requirements.txt` store the output into a file called requirements.txt.
+3.  Then I made sure that all my dependencies had been added to a requirements.txt file. Whilst still in my virtualenv I ran the following command `pip freeze --local > requirements.txt`. `pip freeze` lists all the installed packages in a format that pip can use. The `--local` gives us a list of installed packages only within the virtualenv. The command `> requirements.txt` store the output into a file called **requirements.txt**.
 
 ## Credits
 
