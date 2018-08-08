@@ -28,6 +28,7 @@
       - [Scenario Steps](#scenario-steps)
       - [Desired Outcomes](#desired-outcomes)
     - [Scenario Five: Data Table Nav Bar Link](#scenario-five-data-table-nav-bar-link)
+      - [Scenario Steps](#scenario-steps)
       - [Desired Outcomes](#desired-outcomes)
   - [Deployment](#deployment)
     - [Heroku Setup](#heroku-setup)
@@ -193,6 +194,8 @@ If successful the user should be able to select different data factors and see t
 The user should be able to select different data factors within the charts and then if required reset the charts back to their default view by click on the "Reset all Charts" link in the top right hand corner.
 
 ### Scenario Five: Data Table Nav Bar Link
+
+#### Scenario Steps
 
 1.  From the home page, click on the Data Table link in the top right hand corner of the navigation bar.
 2.  Check that it takes you to the Data Table section of the page.
