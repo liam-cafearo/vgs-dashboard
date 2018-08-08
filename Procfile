@@ -1,0 +1,1 @@
+web: gunicorn video_game_sales:app
