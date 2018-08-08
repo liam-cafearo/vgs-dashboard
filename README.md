@@ -35,7 +35,6 @@
     - [MongoDB with Heroku Addons](#mongodb-with-heroku-addons)
   - [Credits](#credits)
     - [Content](#content)
-    - [Media](#media)
     - [Acknowledgements](#acknowledgements)
 
 ## Overview
@@ -262,6 +261,19 @@ git push heroku master
 
 ### Content
 
-### Media
+- The data set for this dashboard was provided by Gregory Smith on [kaggle.com](https://www.kaggle.com) and the original data set can be found [here](https://www.kaggle.com/gregorut/videogamesales).
+- The font was provided by [Google fonts](https://fonts.google.com/) and can be found [here](https://fonts.google.com/specimen/Press+Start+2P).
+- All the icons were provided by [Font Awesome](https://fontawesome.com/).
 
 ### Acknowledgements
+
+In my acknowledgements no code was copied from these sources and all code was written by me. These are a mention of people/websites that provided me with guidance and I was able to adapt the knowledge of their lessons into my own code.
+
+- [Code Institute](https://www.codeinstitute.net/) and my Mentor for providing me the skills, inspiration and direction to build this Dashboard.
+- [Robin Zigmond](https://github.com/robinzigmond). Robin provided me with direction when I was struggling to get certain aspects of the code working. None of the code is his, Robin just provided some excellent advice on my code when I got stuck for example if I was missing a semicolon on a certain line and then as if by magic my dashboard worked. Robin's Dashboard also provided me with inspiration for features like the loader he implemented whilst the data loaded and I like what Robin had done with his metrics.
+- [Adil Moujahid](http://adilmoujahid.com/posts/2015/01/interactive-data-visualization-d3-dc-python-mongodb/) - His tutorial helped me realise what I was missing to display my charts.
+- [w3schools: How To Make a Loader](https://www.w3schools.com/howto/howto_css_loader.asp) I followed this lesson to build the loader whilst adapting it to my own style.
+- I had some issues earlier on with a clickable bar chart and I found the solution here: [clickable bar charts not clickable if not dc.units.ordinal · Issue #168 · dc-js/dc.js · GitHub](https://github.com/dc-js/dc.js/issues/168).
+- I found solution to setting the correct bar widths on StackOverflow: [javascript - Properly display bin width in barChart using dc.js and crossfilter.js - Stack Overflow](https://stackoverflow.com/questions/15191258/properly-display-bin-width-in-barchart-using-dc-js-and-crossfilter-js/36885768#36885768).
+- I found out how to apply the reset all charts button here: [dc.js chart examples - bl.ocks.org](http://bl.ocks.org/d3noob/6584483).
+- I found out how to apply pagination to the data table from this tutorial: [Tutorial #13 Dive into DC.JS a JavaScript Library - Data Table Pagination — Steemit](https://steemit.com/utopian-io/@faad/tutorial-13-dive-into-dc-js-a-javascript-library-data-table-pagination)
