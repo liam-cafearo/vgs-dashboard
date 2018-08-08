@@ -16,6 +16,8 @@
   - [Technologies Used](#technologies-used)
   - [Testing](#testing)
   - [Deployment](#deployment)
+    - [Heroku Setup](#heroku-setup)
+    - [MongoDB with Heroku Addons](#mongodb-with-heroku-addons)
   - [Credits](#credits)
     - [Content](#content)
     - [Media](#media)
@@ -119,16 +121,44 @@ There are no more features left to implement as the project is now ready for mar
   - Used to deploy and host the dashboard.
 - [gunicorn](http://gunicorn.org/)
   - Used for running HTTP servers on UNIX based operating systems as Heroku uses Ubuntu Server.
+- [mLab](https://mlab.com/)
+  - Heroku Addon for deploying MongoDB.
 
 ## Testing
 
 ## Deployment
 
-The project asks that you use Heroku to host your website or another hosting service. I chose Heroku as we had used that in a previous lesson and therefore had the tools necessary already to deploy the website to Heroku. The instructions to install Heroku can be found [here](https://devcenter.heroku.com/articles/heroku-cli).
+### Heroku Setup
+
+The project asks that you use Heroku to host your website or another hosting service. I chose Heroku as we had used that in a previous lesson and therefore had the tools necessary already to deploy the website to Heroku. The instructions to install Heroku can be found [here](https://devcenter.heroku.com/articles/heroku-cli). The guide below may seem similar to the one that Code Institute provide and that's because I followed this lesson to deploy my dashboard to Heroku.
 
 1.  To being the deployment I used Heroku via the command line to provision some server space by running the command `heroku create`. Heroku then creates an app a with an address and git remote location.
 2.  I then installed gunicorn from the command line from within my virtualenv by running the command `pip install gunicorn`.
 3.  Then I made sure that all my dependencies had been added to a requirements.txt file. Whilst still in my virtualenv I ran the following command `pip freeze --local > requirements.txt`. `pip freeze` lists all the installed packages in a format that pip can use. The `--local` gives us a list of installed packages only within the virtualenv. The command `> requirements.txt` store the output into a file called **requirements.txt**.
+4.  I then created a Procfile so that Heroku knew what to do with the application once it was deployed. I then added `web: gunicorn video_game_sales:app` This tells Heroku that we are going to run a web app and what module and flask app to run once the Procfile is detected. As I created this on a Linux system I didn't need to create Procfile.windows.
+5.  Whilst MongoDB was running I ran from a new terminal window `heroku local` this then detected the Procfile.
+6.  I then created anothe file called runtime.txt to specify the version of python, therefore, within the runtime.txt file I added `python-2.7.15`.
+7.  I then headed over to **localhost:5000** to check that the application is still running as expected.
+8.  I then added the Heroku git repository by running this command from the terminal `git remote add heroku <git-url-for-your-app>`. Following that I ran the following commands to push the code:
+
+```
+git add .
+git commit -m "Initial deployment"
+git push heroku master
+```
+
+Heroku will detect that we are using Python and it will create a virtualenv on the server. It will then install any dependencies listed in the requirements.txt.
+
+9.  I then told Heroku to start a **dyno/worker** using this command: `heroku ps:scale web=1`. The **dyno/worker** is a thread that runs continuously in the background to keep the app running. The command also tells Heroku to change the amount of workers to 1 worker.
+10. To test that the previous steps have been successful I ran `heroku open` in the terminal to check that the app launches.
+
+### MongoDB with Heroku Addons
+
+1.  I headed over to this [Heroku addons page](https://elements.heroku.com/addons/mongolab) and clicked Install mLab MongoDB. I then selected the app I wanted to install mLab for and was taken back to a page to select what plan I wanted and therefore selected the **Sandbox** plan and clicked on the **provision** button so that it provisions a server for me to host MongoDB on.
+2.  I had to verify some payment details, once done I clicked on the **Provision** button once again to be taken to the app and from the resources tab I could see that the mLab addon was there.
+3.  I clicked on the mLab MongoDB link which took me to the mLab Dashboard. I then clicked on the **Users** tab to create a new database user "root".
+4.  From a new terminal window I ran command (amending it to include my user credentials) provided by mLab to connect to the mLab DB to check that I could connect successfully.
+5.  I then created a new collection within mLab giving it the same name as the collection in my local MongoDB. I then restarted the Mongo session using the same command in step 4 and ran `show collections` to check that the collection I just made appears in the list. I then exited the Mongo shell using the exit command.
 
 ## Credits
 
