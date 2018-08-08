@@ -159,6 +159,25 @@ Heroku will detect that we are using Python and it will create a virtualenv on t
 3.  I clicked on the mLab MongoDB link which took me to the mLab Dashboard. I then clicked on the **Users** tab to create a new database user "root".
 4.  From a new terminal window I ran command (amending it to include my user credentials) provided by mLab to connect to the mLab DB to check that I could connect successfully.
 5.  I then created a new collection within mLab giving it the same name as the collection in my local MongoDB. I then restarted the Mongo session using the same command in step 4 and ran `show collections` to check that the collection I just made appears in the list. I then exited the Mongo shell using the exit command.
+6.  I then imported the csv file containing the data by running the following command and adding in the fields that are specific to my database:
+
+```
+mongoimport -h <hostname> -d <dbname> -c <collectionname> -u <dbuser> -p <dbpassword> \
+  --file opendata_projects_clean.csv --type csv --headerline
+```
+
+7.  I then checked that the data has been uploaded using Mongo Management Studio.
+8.  I the altered the database details in my `video_game_sales.py` file so that Flask uses the new database rather than the local one. I also added `import os` to the top of the `video_game_sales.py` file and amended the `MONGO_URI` and `DBS_NAME` to include `os.getenv` so that Python can interactive with multiple underlying operating systems. By providing the mLab URI and database name in the environmental variables it means that the code can adpapt the environment its hosted on.
+9.  I then found the MONGODV_URI and MONGO_DB_NAME, navigated to Heroku --> Reveal Config Vars and pasted in the key:value pairs and clicked add.
+10. I then Amended the connection variable in `video_game_sales.py` and ran the file and checked it worked by opening it in the browser.
+11. I then pushed the changes to Heroku by running the following commands:
+
+```
+git add video_game_sales.py
+git commit -m "Connected to MongDB"
+git push heroku master
+```
+12. I then ran `heroku open` from the command line and the dashboard successfully opened in the browser.
 
 ## Credits
 
