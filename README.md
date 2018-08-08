@@ -18,8 +18,16 @@
     - [Scenario One: Dashboard Tour](#scenario-one-dashboard-tour)
       - [Scenario Steps](#scenario-steps)
       - [Desired Outcomes](#desired-outcomes)
-    - [Scenario Two: Clickable charts that interact with each other.](#scenario-two-clickable-charts-that-interact-with-each-other)
+    - [Scenario Two: Clickable charts/selectors that interact with each other.](#scenario-two-clickable-chartsselectors-that-interact-with-each-other)
       - [Scenario Steps](#scenario-steps)
+      - [Desired Outcomes](#desired-outcomes)
+    - [Scenario Three: Interactive Data Table](#scenario-three-interactive-data-table)
+      - [Scenario Steps](#scenario-steps)
+      - [Desired Outcomes](#desired-outcomes)
+    - [Scenario Four: Reset all charts Nav Bar Link](#scenario-four-reset-all-charts-nav-bar-link)
+      - [Scenario Steps](#scenario-steps)
+      - [Desired Outcomes](#desired-outcomes)
+    - [Scenario Five: Data Table Nav Bar Link](#scenario-five-data-table-nav-bar-link)
       - [Desired Outcomes](#desired-outcomes)
   - [Deployment](#deployment)
     - [Heroku Setup](#heroku-setup)
@@ -147,18 +155,51 @@ For the dashboard I haven't automated any tests however I carried out scenario b
 
 If successful the user should be able to start the dashboard tour, navigate through each tooltip and learn about how the can interact with the dashboard.
 
-### Scenario Two: Clickable charts that interact with each other.
+### Scenario Two: Clickable charts/selectors that interact with each other.
 
 #### Scenario Steps
 
-1.  From the home page select some specific factors from the charts i.e. platform, year etc.
-2.  Check to see if the other charts have change when selecting these different factors.
-3.  Try selecting more factors.
-4.  Check to see if the other charts have change when selecting these different factors.
+1.  From the home page select some specific data factors from the charts i.e. platform, year etc.
+2.  Check to see if the other charts/metrics have change when selecting these different data factors.
+3.  Try selecting more data factors.
+4.  Check to see if the other charts/metrics have change when selecting these different data factors.
 
 #### Desired Outcomes
 
-If successful the user should be able to click on the charts and select specific details such as platform, year etc, they should also see the other charts respond to the change in data.
+If successful the user should be able to click on the charts or selector and select specific details such as platform, year etc, they should also see the other charts respond to the change in data and see that the metrics are also changing.
+
+### Scenario Three: Interactive Data Table
+
+#### Scenario Steps
+
+1.  From the home page, select some different data factors on the charts.
+2.  Scroll down to the data table and see if the data in the table has changed in accordance to the selected data.
+3.  Check to make sure that you can scroll through the data table pages using the previous and next buttons at the bottom of the table. On the first first page the previous button should be disabled and on the last page the next button should be disabled.
+
+#### Desired Outcomes
+
+If successful the user should be able to select different data factors and see that the board then only displays data relevant to the select data factors. They should also be able to scroll through the data table pages using the previous and next buttons at the bottom of the table.
+
+### Scenario Four: Reset all charts Nav Bar Link
+
+#### Scenario Steps
+
+1.  From the home page, select some different data factors on the charts.
+2.  Click on the "Reset all Charts" link in the top right hand corner.
+3.  Check to see if the charts have been reset.
+
+#### Desired Outcomes
+
+The user should be able to select different data factors within the charts and then if required reset the charts back to their default view by click on the "Reset all Charts" link in the top right hand corner.
+
+### Scenario Five: Data Table Nav Bar Link
+
+1.  From the home page, click on the Data Table link in the top right hand corner of the navigation bar.
+2.  Check that it takes you to the Data Table section of the page.
+
+#### Desired Outcomes
+
+Upon clicking the Data Table link in the Nav Bar they should be taken to the Data Table section of the page.
 
 ## Deployment
 
