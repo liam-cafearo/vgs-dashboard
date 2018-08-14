@@ -71,9 +71,7 @@ function createGraphs(error, videoGameSales) {
   var totalOtherSales = totalNumOtherSales.groupAll().reduceSum(function (d) {
     return d["Other_Sales"];
   });
-  var totalGames = totalNumGames.groupAll().reduceSum(function (d) {
-    return d["Rank"];
-  });
+  var totalGames = totalNumGames.groupAll();
 
   // Metrics end
 
@@ -103,52 +101,46 @@ function createGraphs(error, videoGameSales) {
 
   // Chart properties and values
   euSalesND
-    .formatNumber(d3.format("d"))
+    .formatNumber(d3.format(",.0f"))
     .valueAccessor(function (d) {
       return d;
     })
-    .group(totalEUSales)
-    .formatNumber(d3.format(".3s"));
+    .group(totalEUSales);
 
   videoGamesND
     .formatNumber(d3.format("d"))
     .valueAccessor(function (d) {
       return d;
     })
-    .group(totalGames)
-    .formatNumber(d3.format(".3s"));
+    .group(totalGames);
 
   globalSalesND
-    .formatNumber(d3.format("d"))
+    .formatNumber(d3.format(",.0f"))
     .valueAccessor(function (d) {
       return d;
     })
-    .group(totalGlobalSales)
-    .formatNumber(d3.format(".3s"));
+    .group(totalGlobalSales);
 
   jpSalesND
-    .formatNumber(d3.format("d"))
+    .formatNumber(d3.format(".3s"))
     .valueAccessor(function (d) {
       return d;
     })
-    .group(totalJPSales)
-    .formatNumber(d3.format(".3s"));
+    .group(totalJPSales);
 
   naSalesND
-    .formatNumber(d3.format("d"))
+    .formatNumber(d3.format(",.0f"))
     .valueAccessor(function (d) {
       return d;
     })
-    .group(totalNASales)
-    .formatNumber(d3.format(".3s"));
+    .group(totalNASales);
 
   otherSalesND
-    .formatNumber(d3.format("d"))
+    .formatNumber(d3.format(".3s"))
     .valueAccessor(function (d) {
       return d;
     })
-    .group(totalOtherSales)
-    .formatNumber(d3.format(".3s"));
+    .group(totalOtherSales);
 
   // Select Menu
   publisherSelect.dimension(publisherDim).group(pubGroup);
@@ -201,10 +193,11 @@ function createGraphs(error, videoGameSales) {
     .xAxis()
     .ticks(4);
 
+  var chartWidth = document.getElementById("platform-row-chart-container").offsetWidth;
   // Platform Row Chart
   platformChart
     .ordinalColors(["#0000ff", "#00ff00", "#ff0000", "#ffa500", "#FFFF00"])
-    .width(700)
+    .width(chartWidth)
     .height(727)
     .margins({
       top: 30,
@@ -322,4 +315,10 @@ function createGraphs(error, videoGameSales) {
       pageUpdate();
       tabledData.redraw();
     });
+
+  window.onresize = function (event) {
+    var newPageWidth = document.getElementById("platform-row-chart-container").offsetWidth;
+    platformChart.width(window.innerWidth * 0.5)
+    platformChart.redraw();
+  };
 }
