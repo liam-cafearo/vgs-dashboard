@@ -69,12 +69,24 @@
 
 /* Navigation Bar */
 
-.navbar-inverse .navbar-nav > li > a, .navbar a.navbar-brand {
+.navbar-inverse .navbar-nav>li>a,
+.navbar a.navbar-brand,
+.navbar-inverse .navbar-text {
     font-family: 'Press Start 2P', cursive;
     color: #33FF00;
 }
 
+nav ul {
+    text-align: center;
+}
+
 /* Navigation Bar */
+
+/* Body */
+
+body.application {
+    padding-top: 75px;
+}
 
 .chart-wrapper .chart-title {
     background-color: #3D4A58;
@@ -87,3 +99,5 @@
     border: 2px solid black;
     border-radius: 5px;
 }
+
+/* Body */

@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/keen-dashboards.css')}}">
     <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/dc.css')}}">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='css/loader.css')}}">
     <link rel="stylesheet" href="{{ url_for ('static', filename='css/myCSS.css')}}">
     <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/introjs.css')}}">
-    <link rel="stylesheet" href="{{ url_for ('static', filename='css/loader.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
         crossorigin="anonymous">
@@ -24,37 +24,36 @@
         <h1>please wait while the data loads</h1>
     </div>
 
-    <nav>
-        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/">Video Game Sales Dashboard</a>
-                </div>
-                <ul class="nav navbar-nav">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">
+                    <span class="fas fa-gamepad"></span>
+                </a>
+                <p class="navbar-text">Video Game Sales Dashboard</p>
+            </div>
+            <div class="collapse navbar-collapse" id="menu-collapse">
+                <ul class="nav navbar-nav navbar-right">
                     <li>
                         <button type="button" class="btn btn-primary navbar-btn" autofocus onclick="javascript:introJs().start();"> Start Tour!</button>
                     </li>
+                    <li>
+                        <!-- reset all button learnt from http://bl.ocks.org/d3noob/6584483 -->
+                        <a href="javascript:dc.filterAll(); dc.renderAll();">
+                            <span class="fas fa-chart-bar"></span> Reset All Charts
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#data-table-link">
+                            <span class="fas fa-table"></span> Data Table
+                        </a>
+                    </li>
                 </ul>
-                <div class="collapse navbar-collapse" id="menu-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <!-- reset all button learnt from http://bl.ocks.org/d3noob/6584483 -->
-                            <a href="javascript:dc.filterAll(); dc.renderAll();">
-                                <span class="fas fa-chart-bar"></span> Reset All Charts
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#data-table-link">
-                                <span class="fas fa-table"></span> Data Table
-                            </a>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </div>
     </nav>
