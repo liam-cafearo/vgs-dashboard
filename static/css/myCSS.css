@@ -69,22 +69,9 @@
 
 /* Navigation Bar */
 
-.nav-button-tour {
-    margin-top: 8px;
-    
-}
-
 .navbar-inverse .navbar-nav > li > a, .navbar a.navbar-brand {
     font-family: 'Press Start 2P', cursive;
     color: #33FF00;
-}
-
-.nav-button-right {
-    font-size: 12px;
-}
-
-.nav-button-left {
-    font-size: 16px;
 }
 
 /* Navigation Bar */
