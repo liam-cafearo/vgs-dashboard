@@ -193,7 +193,7 @@ function createGraphs(error, videoGameSales) {
     .xAxis()
     .ticks(4);
 
-  var chartWidth = document.getElementById("platform-row-chart-container").offsetWidth;
+  var chartWidth = document.getElementById("platformRowChartResize").offsetWidth;
   // Platform Row Chart
   platformChart
     .ordinalColors(["#0000ff", "#00ff00", "#ff0000", "#ffa500", "#FFFF00"])
@@ -317,7 +317,7 @@ function createGraphs(error, videoGameSales) {
     });
 
   window.onresize = function (event) {
-    var newPageWidth = document.getElementById("platform-row-chart-container").offsetWidth;
+    // var newPageWidth = document.getElementById("platform-row-chart-container").offsetWidth;
     platformChart.width(window.innerWidth * 0.5)
     platformChart.redraw();
   };
