@@ -9,7 +9,7 @@ function createGraphs(error, videoGameSales) {
   }
 
   var videoGames = videoGameSales;
-  videoGames.forEach(function (d) {
+  videoGames.forEach(function(d) {
     d["Year"] = new Date(d["Year"], 0, 1);
   });
 
@@ -18,34 +18,34 @@ function createGraphs(error, videoGameSales) {
 
   // Dimensions start
 
-  var yearDim = ndx.dimension(function (d) {
+  var yearDim = ndx.dimension(function(d) {
     return d["Year"] ? d["Year"] : 0;
   });
-  var genreDim = ndx.dimension(function (d) {
+  var genreDim = ndx.dimension(function(d) {
     return d["Genre"] ? d["Genre"] : "";
   });
-  var publisherDim = ndx.dimension(function (d) {
+  var publisherDim = ndx.dimension(function(d) {
     return d["Publisher"] ? d["Publisher"] : "";
   });
-  var platformDim = ndx.dimension(function (d) {
+  var platformDim = ndx.dimension(function(d) {
     return d["Platform"] ? d["Platform"] : "";
   });
-  var totalNumEUSales = ndx.dimension(function (d) {
+  var totalNumEUSales = ndx.dimension(function(d) {
     return d["EU_Sales"] ? d["EU_Sales"] : 0;
   });
-  var totalNumGlobalSales = ndx.dimension(function (d) {
+  var totalNumGlobalSales = ndx.dimension(function(d) {
     return d["Global_Sales"] ? d["Global_Sales"] : 0;
   });
-  var totalNumJPSales = ndx.dimension(function (d) {
+  var totalNumJPSales = ndx.dimension(function(d) {
     return d["JP_Sales"] ? d["JP_Sales"] : 0;
   });
-  var totalNumNASales = ndx.dimension(function (d) {
+  var totalNumNASales = ndx.dimension(function(d) {
     return d["NA_Sales"] ? d["NA_Sales"] : 0;
   });
-  var totalNumOtherSales = ndx.dimension(function (d) {
+  var totalNumOtherSales = ndx.dimension(function(d) {
     return d["Other_Sales"] ? d["Other_Sales"] : 0;
   });
-  var totalNumGames = ndx.dimension(function (d) {
+  var totalNumGames = ndx.dimension(function(d) {
     return d["Rank"] ? d["Rank"] : 0;
   });
 
@@ -56,19 +56,19 @@ function createGraphs(error, videoGameSales) {
   var numVideoGameGenres = genreDim.group();
   var pubGroup = publisherDim.group();
   var numVideoGameSalesByPlatform = platformDim.group();
-  var totalEUSales = totalNumEUSales.groupAll().reduceSum(function (d) {
+  var totalEUSales = totalNumEUSales.groupAll().reduceSum(function(d) {
     return d["EU_Sales"];
   });
-  var totalGlobalSales = totalNumGlobalSales.groupAll().reduceSum(function (d) {
+  var totalGlobalSales = totalNumGlobalSales.groupAll().reduceSum(function(d) {
     return d["Global_Sales"];
   });
-  var totalJPSales = totalNumJPSales.groupAll().reduceSum(function (d) {
+  var totalJPSales = totalNumJPSales.groupAll().reduceSum(function(d) {
     return d["JP_Sales"];
   });
-  var totalNASales = totalNumNASales.groupAll().reduceSum(function (d) {
+  var totalNASales = totalNumNASales.groupAll().reduceSum(function(d) {
     return d["NA_Sales"];
   });
-  var totalOtherSales = totalNumOtherSales.groupAll().reduceSum(function (d) {
+  var totalOtherSales = totalNumOtherSales.groupAll().reduceSum(function(d) {
     return d["Other_Sales"];
   });
   var totalGames = totalNumGames.groupAll();
@@ -99,45 +99,55 @@ function createGraphs(error, videoGameSales) {
   var pageStart = 0;
   var pageEntries = 25;
 
+  // custom number format to avoid negative values
+  var customNumFormat = function(d) {
+    var newValue = Math.abs(Math.round(d*1000));
+    if (newValue < 1000) {
+      return d3.format("d")(newValue);
+    } else {
+      return d3.format(".3s")(newValue);
+    }
+  };
+
   // Chart properties and values
   euSalesND
-    .formatNumber(d3.format(",.0f"))
-    .valueAccessor(function (d) {
+    .formatNumber(customNumFormat)
+    .valueAccessor(function(d) {
       return d;
     })
     .group(totalEUSales);
 
   videoGamesND
     .formatNumber(d3.format("d"))
-    .valueAccessor(function (d) {
+    .valueAccessor(function(d) {
       return d;
     })
     .group(totalGames);
 
   globalSalesND
-    .formatNumber(d3.format(",.0f"))
-    .valueAccessor(function (d) {
+    .formatNumber(customNumFormat)
+    .valueAccessor(function(d) {
       return d;
     })
     .group(totalGlobalSales);
 
   jpSalesND
-    .formatNumber(d3.format(".3s"))
-    .valueAccessor(function (d) {
+    .formatNumber(customNumFormat)
+    .valueAccessor(function(d) {
       return d;
     })
     .group(totalJPSales);
 
   naSalesND
-    .formatNumber(d3.format(",.0f"))
-    .valueAccessor(function (d) {
+    .formatNumber(customNumFormat)
+    .valueAccessor(function(d) {
       return d;
     })
     .group(totalNASales);
 
   otherSalesND
-    .formatNumber(d3.format(".3s"))
-    .valueAccessor(function (d) {
+    .formatNumber(customNumFormat)
+    .valueAccessor(function(d) {
       return d;
     })
     .group(totalOtherSales);
@@ -162,11 +172,11 @@ function createGraphs(error, videoGameSales) {
     .group(yearReleased)
     .x(d3.time.scale().domain([minYear, maxYear]))
     // makes bars thicker, solution found on StackOverflow mentioned in README
-    .xUnits(function () {
+    .xUnits(function() {
       return 40;
     })
     // makes the bar chart clickable, solution found on StackOverflow and mentioned in README
-    .on("renderlet", function (yearChart) {
+    .on("renderlet", function(yearChart) {
       yearChart.selectAll("rect.bar").on("click", yearChart.onClick);
     })
     .centerBar(true)
@@ -193,11 +203,10 @@ function createGraphs(error, videoGameSales) {
     .xAxis()
     .ticks(4);
 
-  var chartWidth = document.getElementById("platformRowChartResize").offsetWidth;
   // Platform Row Chart
   platformChart
     .ordinalColors(["#0000ff", "#00ff00", "#ff0000", "#ffa500", "#FFFF00"])
-    .width(chartWidth)
+    .width(700)
     .height(727)
     .margins({
       top: 30,
@@ -214,7 +223,7 @@ function createGraphs(error, videoGameSales) {
   var tabledData = dc.dataTable("#data-table");
   tabledData
     .dimension(yearDim)
-    .group(function (d) {
+    .group(function(d) {
       // format the date as d/m/YYYY, add +1 to month as JS months are zero based.
       return (
         d.Year.getDate() +
@@ -226,13 +235,13 @@ function createGraphs(error, videoGameSales) {
     })
     .size(Infinity)
     .columns([
-      function (d) {
+      function(d) {
         return d.Name;
       },
-      function (d) {
+      function(d) {
         return d.Platform;
       },
-      function (d) {
+      function(d) {
         return (
           d.Year.getDate() +
           "/" +
@@ -241,35 +250,35 @@ function createGraphs(error, videoGameSales) {
           d.Year.getFullYear()
         );
       },
-      function (d) {
+      function(d) {
         return d.Genre;
       },
-      function (d) {
+      function(d) {
         return d.Publisher;
       },
-      function (d) {
+      function(d) {
         return d.NA_Sales;
       },
-      function (d) {
+      function(d) {
         return d.EU_Sales;
       },
-      function (d) {
+      function(d) {
         return d.JP_Sales;
       },
-      function (d) {
+      function(d) {
         return d.Other_Sales;
       },
-      function (d) {
+      function(d) {
         return d.Global_Sales;
       }
     ])
     // sort the data in the table by year.
-    .sortBy(function (d) {
+    .sortBy(function(d) {
       return d["Year"];
     })
     .order(d3.ascending);
 
-  pageUpdate()
+  pageUpdate();
   dc.renderAll();
 
   // Data table pagination inspired by the documentation here:
@@ -285,8 +294,14 @@ function createGraphs(error, videoGameSales) {
 
     // these two lines determine whether to disable the previous/next buttons
     // depending on where we are in the records.
-    d3.select("#page-prev").attr('disabled', pageStart - pageEntries < 0 ? 'true' : null);
-    d3.select("#page-next").attr('disabled', pageStart + pageEntries >= ndx.size() ? 'true' : null);
+    d3.select("#page-prev").attr(
+      "disabled",
+      pageStart - pageEntries < 0 ? "true" : null
+    );
+    d3.select("#page-next").attr(
+      "disabled",
+      pageStart + pageEntries >= ndx.size() ? "true" : null
+    );
   }
 
   // This method slices the data table with beginSlice and endSlice. We also call our
@@ -315,10 +330,4 @@ function createGraphs(error, videoGameSales) {
       pageUpdate();
       tabledData.redraw();
     });
-
-  window.onresize = function (event) {
-    // var newPageWidth = document.getElementById("platform-row-chart-container").offsetWidth;
-    platformChart.width(window.innerWidth * 0.5)
-    platformChart.redraw();
-  };
 }
