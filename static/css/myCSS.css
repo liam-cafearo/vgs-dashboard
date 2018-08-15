@@ -80,6 +80,12 @@ nav ul {
     text-align: center;
 }
 
+.navbar-brand {
+    padding-top: 10px;
+    padding-right: 5px;
+}
+
+
 /* Navigation Bar */
 
 /* Body */
