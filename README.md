@@ -30,6 +30,12 @@
     - [Scenario Five: Data Table Nav Bar Link](#scenario-five-data-table-nav-bar-link)
       - [Scenario Steps](#scenario-steps)
       - [Desired Outcomes](#desired-outcomes)
+    - [Scenario Six: Mobile Responsive charts](#scenario-six-mobile-responsive-charts)
+      - [Desired Outcome](#desired-outcome)
+      - [Issue Encountered](#issue-encountered)
+    - [Scenario Seven: Metric Numbers Showing Negative Values](#scenario-seven-metric-numbers-showing-negative-values)
+      - [Issued Encountered](#issued-encountered)
+      - [Solution](#solution)
   - [Deployment](#deployment)
     - [Heroku Setup](#heroku-setup)
     - [MongoDB with Heroku Addons](#mongodb-with-heroku-addons)
@@ -99,7 +105,7 @@ I also created some mockups of the site which can be viewed in the folder named 
 
 ### Features Left to Implement
 
-There are no more features left to implement as the project is now ready for marking.
+- Mobile responsive charts.
 
 ## Technologies Used
 
@@ -116,7 +122,7 @@ There are no more features left to implement as the project is now ready for mar
 - [d3.js](https://d3js.org/)
   - I use D3 v3.5.3 to render interactive charts and graphs based on the data I supplied.
 - [dc.js](https://dc-js.github.io/dc.js/)
-  - I use dc.js v2.1.10 to make plotting the charts easier.
+  - I use dc.js v2.1.10 to make plotting the charts easier. This was upgraded from the previously supplied v2.1.0. v2.1.10 included the `beginSlice` and `endSlice` functions to enable the data table pagination.
 - [intro.js](https://introjs.com/)
   - I use intro.js v2.9.3 to create an onboarding process for the dashboard
 - [keen.js](https://github.com/keen/dashboards)
@@ -202,6 +208,55 @@ The user should be able to select different data factors within the charts and t
 #### Desired Outcomes
 
 Upon clicking the Data Table link in the Nav Bar they should be taken to the Data Table section of the page.
+
+### Scenario Six: Mobile Responsive charts
+
+#### Desired Outcome
+
+The charts should fit the width of the `div` they are placed in and automatically resize when the use resizes the window or views it on different screen sizes.
+
+#### Issue Encountered
+
+The version of dc.js that is used in this project doesn't have the responsive functions built in. Therefore I tried the recommendation on Stack Overflow found [here](https://stackoverflow.com/questions/22292369/how-to-make-the-dc-js-charts-responsive) adapting it to my project. Like so:
+
+```javascript
+var chartWidth = document.getElementById("platformRowChartResize").offsetWidth;
+window.onresize = function(event) {
+  // var newPageWidth = document.getElementById("platform-row-chart-container").offsetWidth;
+  platformChart.width(window.innerWidth * 0.5);
+  platformChart.redraw();
+};
+```
+
+However after testing several different properties for example `.innerWidth;` rather than `.offsetWidth;` I feel that this is a bug within the version of dc.js that I am using for this project. That being said the overall functionality of the dashboard is working really well and this doesn't effect the use.
+
+### Scenario Seven: Metric Numbers Showing Negative Values
+
+#### Issued Encountered
+
+When the user selected some of the chart factors or a particular publisher from the publisher select menu some of the metrics displayed negative values. After several testing and seeking guidance from my mentor we arrived at the conclusion that it was to do with some of the sales values being a fraction.
+
+#### Solution
+
+My mentor advised using a custom number formatter using JavaScript's Math Object. I therefore implemented the following into my code taking inspiration from the explanation that my mentor had provided and used the following:
+
+```javascript
+// create a variable so we can call it later in .formatNumber()
+var customNumFormat = function(d) {
+  // create another variable that takes the number * 1000, rounds the number so there is no
+  // numbers with decimal points and then it returns the absolute value.
+  var newValue = Math.abs(Math.round(d * 1000));
+  // if the newValue is less than 1000 we format it using the "d" format specifier.
+  if (newValue < 1000) {
+    return d3.format("d")(newValue);
+  } else {
+    // otherwise we use the ".3s" format specifier.
+    return d3.format(".3s")(newValue);
+  }
+};
+```
+
+This resolved the issuse of displaying negative numbers.
 
 ## Deployment
 
