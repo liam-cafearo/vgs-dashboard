@@ -1,7 +1,7 @@
 var loaderVar;
 
 function loaderFunction() {
-    loaderVar = setTimeout(displayPage, 45000);
+    loaderVar = setTimeout(displayPage, 48000);
 }
 
 function displayPage() {
