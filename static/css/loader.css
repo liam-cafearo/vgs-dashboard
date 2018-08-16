@@ -1,7 +1,7 @@
 #loader {
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 40%;
     z-index: 1;
     width: 150px;
     height: 150px;
@@ -78,5 +78,5 @@
     position: absolute;
     left: 25%;
     right: 25%;
-    top: 65%;
+    top: 50%;
 }
